@@ -1,0 +1,17 @@
+baseURL: https://example.org/
+languageCode: en-us
+caches:
+  images:
+    dir: :cacheDir/images
+
+theme: ["PaperMod"]
+# https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/#profile-mode
+params:
+  profileMode:
+    enabled: true
+    Title: Hi there 🌊
+    subtitle: Just simple blogs
+    imageUrl: "https://media.licdn.com/dms/image/v2/D5603AQGF_50uYuXftw/profile-displayphoto-scale_400_400/B56ZiZV.zEHMAk-/0/1754919334037?e=1758153600&v=beta&t=BPYxmICI578uZ1LkS1Sja1hlLkWk_RddVvn1tlJt31c"
+  socialIcons:
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/polohi/"
