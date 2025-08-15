@@ -28,6 +28,11 @@ params:
   ShowReadingTime: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  
+  # Custom CSS for wider content
+  assets:
+    disableHLJS: false
 
   # https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/#profile-mode
   profileMode:
