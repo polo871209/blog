@@ -31,11 +31,13 @@ All posts MUST include YAML frontmatter with these fields:
 
 - `title`: Post title (required)
 - `date`: Publication date (required)
+- **description**: Meta description for SEO
+- **tags**: Array of tags for categorization
 
 ### Date Format
 
 - **Standard**: ISO 8601 with timezone
-- **Example**: `2025-08-15T10:21:05+08:00`
+- **Example**: `2025-08-15T10:24:33+08:00`
 - **Template**: `YYYY-MM-DDTHH:MM:SS+08:00`
 
 ### Post Template
@@ -43,8 +45,7 @@ All posts MUST include YAML frontmatter with these fields:
 ```yaml
 ---
 title: "Your Post Title"
-date: 2025-08-15T10:21:05+08:00
-lastmod:
+date: 2025-08-15T10:24:33+08:00
 description: "Brief description for SEO"
 tags: ["tag1", "tag2"]
 ---
@@ -64,14 +65,6 @@ Every post MUST start with:
 
 1. **TL;DR section** - User will provide content, agent may only make minor wording improvements when requested
 2. **Main content** - Detailed explanation, examples, and insights
-
-### Essential Front Matter Variables
-
-- **title**: Page title
-- **date**: Publication date (use current timezone +08:00)
-- **lastmod**: Last modification date
-- **description**: Meta description for SEO
-- **tags**: Array of tags for categorization
 
 ## Writing Style Guidelines
 
@@ -94,28 +87,25 @@ Every post MUST start with:
 - Start with user-provided TL;DR, then expand into detailed content
 - Use clear headings and subheadings
 - Break up long paragraphs for readability
-- Include practical examples where relevant
-- End with actionable takeaways or conclusions
 
-### Writing Tips
+## Layout and Readability Guidelines
 
-- Write as if talking to a friend who's interested in the topic
-- Share personal experiences and lessons learned
-- Use "I" and "you" naturally in conversation
-- Keep sentences varied in length but generally concise
-- Include relevant code examples with proper syntax highlighting
+**ALWAYS apply these layout improvements for better readability:**
 
-## Configuration
+- Add relevant emojis to ALL section headers for visual scanning
+- Use **em dashes (—)** instead of colons in bullet points
+- Apply **bold text** for key phrases and concepts
+- Use _italic text_ for commentary and asides
+- Add blockquotes (`>`) for key insights with emoji prefixes like `> **💡 Key Insight:**`
+- Break up long paragraphs into shorter, scannable chunks
+- Use blockquotes to highlight important concepts
+- Add strategic emphasis with bold and italic formatting
+- Include visual separators and white space
+- Always specify language for code blocks (`dockerfile, `bash, etc.)
+- Add Table of Contents for posts with 4+ sections with horizontal rule (`---`) after TOC
 
-- **File**: `hugo.yaml` (YAML format only)
-- **Theme**: PaperMod (pre-configured)
+### When to Apply
 
-## Key Points
-
-1. Only modify files in `content/` directory and `hugo.yaml`
-2. All other directories are managed by Hugo automatically
-3. Always test changes at http://localhost:1313/blog/ if hugo.yaml are modified
-4. Ensure frontmatter follows exact format requirements
-5. Use proper ISO 8601 date formatting with timezone (+08:00)
-6. Every post MUST start with a TL;DR section (user-provided content)
-
+- **Always** apply these formatting rules when creating or editing blog posts
+- Focus on scanability and visual hierarchy
+- Ensure consistent emoji usage throughout sections

@@ -9,6 +9,12 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
+frontmatter:
+  lastmod:
+    - :git
+    - lastmod
+    - :fileModTime
+
 minify:
   disableXML: true
   minifyOutput: true
