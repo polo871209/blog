@@ -32,7 +32,7 @@ Think of Wolfi as the sweet spot between `scratch` and bloated base images like 
 
 ### 🚀 Real-World Example: Python Service with UV
 
-Let me show you how Wolfi shines in practice. Here's a multi-stage Dockerfile that builds a Python service with UV (you can find my complete project at [polo871209/rpc](https://github.com/polo871209/rpc/blob/main/client/Dockerfile)):
+Let me show you how Wolfi shines in practice. Here's a multi-stage Dockerfile that builds a Python service with UV (you can find my complete project at [polo871209/rpc](https://github.com/polo871209/rpc/blob/main/client/Dockerfile))
 
 ```dockerfile
 # syntax=docker/dockerfile:1
@@ -85,7 +85,7 @@ EXPOSE 8000
 
 Notice how Wolfi packages make modern toolchain development a breeze?
 
-```bash
+```dockerfile
 RUN apk add --no-cache \
       ca-certificates \
       py3.13-pip \
@@ -97,7 +97,7 @@ RUN apk add --no-cache \
 
 - Starting from a different base image and copying everything over _([here's my 94-line Distroless nightmare](https://gist.github.com/polo871209/559332ba3bd08aa992a46ab2a97a45a6) for context)_
 - Manually downloading and installing packages without a package manager _(debugging nightmare)_
-- Or just giving up and going back to a full OS image
+- Or just giving up and going back to a full OS image🤦‍♂️
 
 > **💡 The Distroless Problem:** You're essentially back to the scratch problem - secure but painfully limiting. Wolfi gives you the security benefits without the "why can't I just install one simple package?" frustration.
 
