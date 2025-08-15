@@ -1,19 +1,10 @@
 ---
 date: "2025-08-14T22:08:48+08:00"
-title: "Wolfi Make Easy"
+title: "Wolfi Made Easy"
 tags: ["container", "wolfi", "security", "docker", "python"]
 description: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
----
-
-## 📖 Table of Contents
-
-- [🔍 What Makes Wolfi Special?](#-what-makes-wolfi-special)
-- [🚀 Real-World Example: Python Service with UV](#-real-world-example-python-service-with-uv)
-- [🔧 Breaking Down the Magic](#-breaking-down-the-magic)
-- [🔄 Why I Switched from Alpine](#-why-i-switched-from-alpine)
-- [🏁 The Bottom Line](#-the-bottom-line)
-- [📚 References](#-references)
-
+ShowToc: true
+TocOpen: true
 ---
 
 ## TL;DR
@@ -23,6 +14,8 @@ We all know about scratch – the empty container image. With literally nothing 
 However, this also means debugging feels like trying to fix a car with the hood welded shut and adding any libraries can be a real nightmare. No shell, no package manager, no nothing.
 
 So here I am, introducing **[Wolfi](https://github.com/wolfi-dev)** – a minimal container image that's both tiny and secure, yet still gives you the benefits of a proper package manager.
+
+---
 
 ## 🔍 What Makes Wolfi Special?
 
@@ -35,7 +28,9 @@ Think of Wolfi as the sweet spot between `scratch` and bloated base images like 
 
 > **Key Insight:** While Wolfi uses `apk` commands that look familiar, it's not actually using Alpine's packages. Wolfi maintains its own [OS repository](https://github.com/wolfi-dev/os) with packages built specifically for security and minimal attack surface.
 
-## 🚀 Real-World Example: Python Service with UV
+---
+
+### 🚀 Real-World Example: Python Service with UV
 
 Let me show you how Wolfi shines in practice. Here's a multi-stage Dockerfile that builds a Python service with UV (you can find my complete project at [polo871209/rpc](https://github.com/polo871209/rpc/blob/main/client/Dockerfile)):
 
@@ -100,13 +95,15 @@ RUN apk add --no-cache \
 
 **Compare this to Google's Distroless images**, where adding a single package means either:
 
-- Starting from a different base image and copying everything over *(hello, massive multi-stage complexity)*
-- Manually downloading and installing packages without a package manager *(debugging nightmare)*
+- Starting from a different base image and copying everything over _([here's my 94-line Distroless nightmare](https://gist.github.com/polo871209/559332ba3bd08aa992a46ab2a97a45a6) for context)_
+- Manually downloading and installing packages without a package manager _(debugging nightmare)_
 - Or just giving up and going back to a full OS image
 
 > **💡 The Distroless Problem:** You're essentially back to the scratch problem - secure but painfully limiting. Wolfi gives you the security benefits without the "why can't I just install one simple package?" frustration.
 
 While the syntax looks like Alpine's `apk`, you're actually pulling from Wolfi's curated package repository. Each package is built with security in mind and maintained through their [OS project](https://github.com/wolfi-dev/os). No more outdated packages or security vulnerabilities lingering for months.
+
+---
 
 ### 🔒 Security by Default
 
@@ -139,7 +136,7 @@ I used to be an Alpine devotee, but Wolfi won me over for a few key reasons:
 
 Wolfi feels like what container base images should have been from the start — **minimal but practical, secure but usable**. It's not trying to be everything to everyone; it's focused on doing the container base image job really well.
 
-If you're tired of choosing between security and convenience, or between size and functionality, give Wolfi a shot. Your future self *(and your security team)* will thank you.
+If you're tired of choosing between security and convenience, or between size and functionality, give Wolfi a shot. Your future self _(and your security team)_ will thank you.
 
 ## 📚 References
 
