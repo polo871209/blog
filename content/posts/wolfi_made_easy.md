@@ -32,7 +32,7 @@ Think of Wolfi as the sweet spot between `scratch` and bloated base images like 
 
 ### 🚀 Real-World Example: Python Service with UV
 
-Let me show you how Wolfi shines in practice. Here's a multi-stage Dockerfile that builds a Python service with UV (you can find my complete project at [polo871209/rpc](https://github.com/polo871209/rpc/blob/main/client/Dockerfile))
+Let me show you how Wolfi shines in practice. Here's a multi-stage Dockerfile that builds a Python service with UV (you can find my complete project at [polo871209/arch](https://github.com/polo871209/arch/blob/main/client/Dockerfile))
 
 ```dockerfile
 # syntax=docker/dockerfile:1
