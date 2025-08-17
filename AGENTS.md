@@ -48,6 +48,8 @@ title: "Your Post Title"
 date: 2025-08-15T10:24:33+08:00
 description: "Brief description for SEO"
 tags: ["tag1", "tag2"]
+ShowToc: true
+TocOpen: true
 ---
 
 ## TL;DR
