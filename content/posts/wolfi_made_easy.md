@@ -1,7 +1,7 @@
 ---
 date: "2025-08-14T22:08:48+08:00"
 title: "Wolfi Made Easy"
-tags: ["container", "wolfi", "security", "docker", "python"]
+tags: ["container", "wolfi", "security", "docker", "python", chainguard]
 description: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
 ShowToc: true
 TocOpen: true
@@ -134,13 +134,15 @@ I used to be an Alpine devotee, but Wolfi won me over for a few key reasons:
 3. **Purpose-built packages** — Instead of repurposing server packages, Wolfi builds everything specifically for containers
 4. **Faster security updates** — When a vulnerability hits, Wolfi's automated rebuild system pushes fixes in hours, not days
 
-> **💡 Key Difference:** The `apk` syntax might look the same, but under the hood you're getting a completely different (and more secure) package ecosystem.
+> **🔍 Key Difference:** The `apk` syntax might look the same, but under the hood you're getting a completely different (and more secure) package ecosystem.
 
 ## 🏁 The Bottom Line
 
 Wolfi feels like what container base images should have been from the start — **minimal but practical, secure but usable**. It's not trying to be everything to everyone; it's focused on doing the container base image job really well.
 
 If you're tired of choosing between security and convenience, or between size and functionality, give Wolfi a shot. Your future self _(and your security team)_ will thank you.
+
+> **💡** While Dockerfile examples above show how to use pre-built Wolfi base images, you can also build custom Wolfi images declaratively using [apko](../apko_container_builder). Perfect for when you need reproducible builds with specific package combinations.
 
 ## 📚 References
 
