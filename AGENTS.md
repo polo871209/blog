@@ -72,10 +72,10 @@ Every post MUST start with:
 
 ### Tone and Voice
 
+- **Audience**: Technical professionals — assume familiarity with concepts
 - **Style**: Fluent but casual
-- **Approach**: Conversational and approachable
-- **Perspective**: Personal insights and experiences
-- **Language**: Clear, direct, and jargon-free when possible
+- **Approach**: Conversational and direct
+- **Language**: Clear and concise, technical terms are expected
 
 ### TL;DR Guidelines
 
@@ -111,3 +111,10 @@ Every post MUST start with:
 - **Always** apply these formatting rules when creating or editing blog posts
 - Focus on scanability and visual hierarchy
 - Ensure consistent emoji usage throughout sections
+
+### Technical Accuracy
+
+- **Verify commands** — Test CLI examples using `--help` or actual execution when possible
+- **Check syntax** — Ensure flags, parameters, and command structure are correct
+- **Reference docs** — Cross-check against official tool documentation
+- **Note versions** — Add disclaimers when commands may vary between tool versions
