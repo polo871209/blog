@@ -17,7 +17,7 @@ So here I am, introducing **[Wolfi](https://github.com/wolfi-dev)** – a minima
 
 ---
 
-## 🔍 What Makes Wolfi Special?
+## What Makes Wolfi Special?
 
 Think of Wolfi as the sweet spot between `scratch` and bloated base images like Ubuntu or Alpine. It's designed from the ground up for containers, which means:
 
@@ -30,7 +30,7 @@ Think of Wolfi as the sweet spot between `scratch` and bloated base images like 
 
 ---
 
-### 🚀 Real-World Example: Python Service with UV
+### Real-World Example: Python Service with UV
 
 Let me show you how Wolfi shines in practice. Here's a multi-stage Dockerfile that builds a Python service with UV (you can find my complete project at [polo871209/arch](https://github.com/polo871209/arch/blob/main/client/Dockerfile))
 
@@ -83,9 +83,9 @@ COPY --from=builder /app/app/ ./app/
 EXPOSE 8000/tcp
 ```
 
-## 🔧 Breaking Down the Magic
+## Breaking Down the Magic
 
-### 🛠️ Modern Tooling
+### Modern Tooling
 
 Notice how Wolfi packages make modern toolchain development a breeze?
 
@@ -109,7 +109,7 @@ While the syntax looks like Alpine's `apk`, you're actually pulling from Wolfi's
 
 ---
 
-### 🔒 Security by Default
+### Security by Default
 
 The runtime stage shows Wolfi's security-first design:
 
@@ -125,7 +125,7 @@ Unlike traditional distributions that wait for CVEs to be published, Wolfi monit
 
 **This means potential zero-day vulnerabilities get patched in hours, not days or weeks.** When a security researcher finds a flaw, Wolfi's automated systems can rebuild and redistribute the fixed package before attackers even know the vulnerability exists.
 
-## 🔄 Why I Switched from Alpine
+## Why I Switched from Alpine
 
 I used to be an Alpine devotee, but Wolfi won me over for a few key reasons:
 
@@ -136,7 +136,7 @@ I used to be an Alpine devotee, but Wolfi won me over for a few key reasons:
 
 > **🔍 Key Difference:** The `apk` syntax might look the same, but under the hood you're getting a completely different (and more secure) package ecosystem.
 
-## 🏁 The Bottom Line
+## The Bottom Line
 
 Wolfi feels like what container base images should have been from the start — **minimal but practical, secure but usable**. It's not trying to be everything to everyone; it's focused on doing the container base image job really well.
 
