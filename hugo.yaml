@@ -35,7 +35,7 @@ params:
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
-  
+
   # Custom CSS for wider content
   assets:
     disableHLJS: false
@@ -66,6 +66,11 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
+
+  editPost:
+    URL: "https://github.com/polo871209/blog/blob/main/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
 
 outputs:
   home:
