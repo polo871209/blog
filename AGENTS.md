@@ -38,7 +38,6 @@ All posts MUST include YAML frontmatter with these fields:
 
 - **Standard**: ISO 8601 with timezone
 - **Example**: `2025-08-15T10:24:33+08:00`
-- **Template**: `YYYY-MM-DDTHH:MM:SS+08:00`
 
 ### Post Template
 
@@ -73,7 +72,7 @@ Every post MUST start with:
 ### Tone and Voice
 
 - **Audience**: Technical professionals — assume familiarity with concepts
-- **Style**: Fluent but casual
+- **Style**: Fluent but casual, don't use emoji
 - **Approach**: Conversational and direct
 - **Language**: Clear and concise, technical terms are expected
 
