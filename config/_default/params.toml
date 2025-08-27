@@ -1,0 +1,32 @@
+colorScheme = "congo"
+
+enableSearch = true
+enableCodeCopy = true
+enableImageLazyLoading = true
+enableImageWebp = true
+enableQuicklink = true
+
+[footer]
+showThemeAttribution = true
+showAppearanceSwitcher = true
+
+[homepage]
+layout = "profile"
+
+[article]
+showDate = true
+showDateUpdated = false
+showAuthor = true
+showBreadcrumbs = true
+showDraftLabel = true
+showEdit = true
+editURL = "https://github.com/polo871209/blog/tree/main/content/"
+editAppendPath = true
+showHeadingAnchors = true
+showPagination = true
+invertPagination = false
+showReadingTime = true
+showTableOfContents = true
+showTaxonomies = false
+showWordCount = false
+showComments = false

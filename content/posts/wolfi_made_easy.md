@@ -3,8 +3,6 @@ date: "2025-08-14T22:08:48+08:00"
 title: "Wolfi Made Easy"
 tags: ["container", "wolfi", "security", "docker", "python", chainguard]
 description: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
-ShowToc: true
-TocOpen: true
 ---
 
 ## TL;DR

@@ -3,8 +3,6 @@ title: "Apko: Container Image Builder"
 date: 2025-08-19T10:24:33+08:00
 description: "apko builds minimal, secure container images from APK packages using declarative YAML configuration"
 tags: ["apko", "containers", "security", "chainguard", "wolfi", "alpine"]
-ShowToc: true
-TocOpen: true
 ---
 
 ## TL;DR

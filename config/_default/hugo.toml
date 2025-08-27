@@ -1,0 +1,11 @@
+baseURL = "https://polo871209.github.io"
+languageCode = "en"
+
+enableRobotsTXT = true
+summaryLength = 0
+
+[pagination]
+pagerSize = 15
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
