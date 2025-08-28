@@ -1,7 +1,9 @@
 ---
 title: "Apko: Container Image Builder"
-date: 2025-08-19T10:24:33+08:00
-description: "apko builds minimal, secure container images from APK packages using declarative YAML configuration"
+date: 2025-08-19
+lastmod: 2025-08-19
+description: "Learn how Chainguard's apko builds minimal, secure container images from APK packages using declarative YAML configuration with automatic SBOM generation and zero-vulnerability base images"
+summary: "apko builds minimal, secure container images from APK packages using declarative YAML configuration"
 tags: ["apko", "containers", "security", "chainguard", "wolfi", "alpine"]
 ---
 

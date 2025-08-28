@@ -4,6 +4,12 @@ languageCode = "en"
 enableRobotsTXT = true
 summaryLength = 0
 
+[markup]
+defaultMarkdownHandler = "goldmark"
+[markup.highlight]
+lineNos = true
+noClasses = false
+
 [pagination]
 pagerSize = 15
 

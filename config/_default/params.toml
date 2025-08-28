@@ -15,8 +15,8 @@ layout = "profile"
 
 [article]
 showDate = true
-showDateUpdated = false
-showAuthor = true
+showDateUpdated = true
+showAuthor = false
 showBreadcrumbs = true
 showDraftLabel = true
 showEdit = true
@@ -24,9 +24,16 @@ editURL = "https://github.com/polo871209/blog/tree/main/content/"
 editAppendPath = true
 showHeadingAnchors = true
 showPagination = true
-invertPagination = false
+invertPagination = true
 showReadingTime = true
 showTableOfContents = true
-showTaxonomies = false
+showTaxonomies = true
 showWordCount = false
 showComments = false
+
+[list]
+showBreadcrumbs = true
+showSummary = true
+showTaxonomies = false
+groupByYear = false
+paginationWidth = 1

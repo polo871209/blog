@@ -1,8 +1,10 @@
 ---
-date: "2025-08-14T22:08:48+08:00"
+date: 2025-08-14
+lastmod: 2025-08-14T10:24:33+08:00
 title: "Wolfi Made Easy"
+description: "Discover how Wolfi bridges the gap between scratch containers and bloated base images with glibc compatibility, APK package management, and proactive security patching that fixes vulnerabilities in hours, not days"
+summary: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
 tags: ["container", "wolfi", "security", "docker", "python", chainguard]
-description: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
 ---
 
 ## TL;DR

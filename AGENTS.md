@@ -2,53 +2,35 @@
 
 ## Overview
 
-This guide provides instructions for developing and managing a Hugo blog with the PaperMod theme.
+Complete development guide for managing a Hugo blog with Congo theme — covers content creation rules, frontmatter requirements, writing style guidelines, and layout best practices for technical blog posts.
 
-## Prerequisites
+## Configuration Guidelines
 
-- Hugo server already running with `hugo server -D` in the background
-- Verify functionality at: http://localhost:1313/blog/
-
-## Directory Structure
-
-```
-├── content/
-│   └── posts/          # All blog posts go here
-├── hugo.yaml           # Main configuration file
-└── [other directories] # Handled automatically by Hugo or manually
-```
+- **Main config** — `config/_default/hugo.toml` for Hugo settings
+- **Theme config** — `config/_default/params.toml` for Congo theme parameters
+- **Languages** — `config/_default/languages.en.toml` for language-specific settings
+- **Menus** — `config/_default/menus.en.toml` for navigation configuration
+- **Follow Hugo documentation** — Reference https://gohugo.io/configuration/ for Hugo settings
+- **Follow Congo documentation** — Reference https://jpanther.github.io/congo/docs/configuration/ for theme parameters
+- **Use TOML format** — All configuration files use `.toml` extension
 
 ## Content Creation Rules
 
 ### Post Location
 
-- **Directory**: `content/posts/`
-- **Format**: Markdown files (`.md`)
-
-### Frontmatter Requirements
-
-All posts MUST include YAML frontmatter with these fields:
-
-- `title`: Post title (required)
-- `date`: Publication date (required)
-- **description**: Meta description for SEO
-- **tags**: Array of tags for categorization
-
-### Date Format
-
-- **Standard**: ISO 8601 with timezone
-- **Example**: `2025-08-15T10:24:33+08:00`
+- **Directory** — `content/posts/{post_name}/index.md`
 
 ### Post Template
 
 ```yaml
 ---
-title: "Your Post Title"
-date: 2025-08-15T10:24:33+08:00
-description: "Brief description for SEO"
-tags: ["tag1", "tag2"]
-ShowToc: true
-TocOpen: true
+# All posts MUST include YAML frontmatter with these fields:
+title: "Post title"
+date: 2020-08-13 # Publication date, format yyyy-mm-dd
+lastmod: 2025-08-13 # Update every time there is change for the post, format yyyy-mm-dd
+description: "Meta description for SEO"
+summary: "Summary for quick intro view for the list view, concise without too much detail"
+tags: ["post", "tech", "tags"] # Array of tags for categorization
 ---
 
 ## TL;DR
@@ -60,60 +42,35 @@ TocOpen: true
 Your main content starts here...
 ```
 
-### Content Structure Requirements
-
-Every post MUST start with:
-
-1. **TL;DR section** - User will provide content, agent may only make minor wording improvements when requested
-2. **Main content** - Detailed explanation, examples, and insights
-
-## Writing Style Guidelines
-
 ### Tone and Voice
 
-- **Audience**: Technical professionals — assume familiarity with concepts
-- **Style**: Fluent but casual, don't use emoji
-- **Approach**: Conversational and direct
-- **Language**: Clear and concise, technical terms are expected
-
-### TL;DR Guidelines
-
-- **User provides TL;DR content** - do not create from scratch
-- **Improvements only when requested** - only adjust wording/clarity when user specifically asks
-- **Preserve user's intent** - keep the main points and tone as intended
-- **Do not remove key information**
-
-### Content Structure
-
-- Start with user-provided TL;DR, then expand into detailed content
-- Use clear headings and subheadings
-- Break up long paragraphs for readability
-
-## Layout and Readability Guidelines
-
-**ALWAYS apply these layout improvements for better readability:**
-
-- Add relevant emojis to ALL section headers for visual scanning
-- Use **em dashes (—)** instead of colons in bullet points
-- Apply **bold text** for key phrases and concepts
-- Use _italic text_ for commentary and asides
-- Add blockquotes (`>`) for key insights with emoji prefixes like `> **💡 Key Insight:**`
-- Break up long paragraphs into shorter, scannable chunks
-- Use blockquotes to highlight important concepts
-- Add strategic emphasis with bold and italic formatting
-- Include visual separators and white space
-- Always specify language for code blocks (`dockerfile, `bash, etc.)
-- Add Table of Contents for posts with 4+ sections with horizontal rule (`---`) after TOC
-
-### When to Apply
-
-- **Always** apply these formatting rules when creating or editing blog posts
-- Focus on scanability and visual hierarchy
-- Ensure consistent emoji usage throughout sections
+- **Audience** — Technical professionals, assume familiarity with concepts
+- **Style** — Fluent but casual, professional tone
+- **Approach** — Conversational and direct
+- **Language** — Clear and concise, technical terms are expected
+- **Formatting** — **NEVER use emojis** in headers, content, or anywhere in blog posts
 
 ### Technical Accuracy
 
 - **Verify commands** — Test CLI examples using `--help` or actual execution when possible
 - **Check syntax** — Ensure flags, parameters, and command structure are correct
 - **Reference docs** — Cross-check against official tool documentation
-- **Note versions** — Add disclaimers when commands may vary between tool versions
+
+### TL;DR Guidelines
+
+- **User provides TL;DR content** — do not create from scratch
+- **Improvements only when requested** — only adjust wording/clarity when user specifically asks
+- **Preserve user's intent** — keep the main points and tone as intended
+- **Do not remove key information**
+
+### Visual Formatting Rules
+
+- **Em dashes (—)** — Use instead of colons in bullet points for better readability
+- **Backticks** — Apply `backquotes` for key phrases, concepts, and inline code
+- **Congo shortcodes** — Use Alert and Badge shortcodes for enhanced formatting
+- **Official documentation** — Reference Congo docs for advanced features:
+  - Shortcodes: https://jpanther.github.io/congo/docs/shortcodes/
+  - Markdown samples: https://jpanther.github.io/congo/samples/markdown/
+- **Paragraph structure** — Break up long paragraphs into shorter, scannable chunks
+- **White space** — Include visual separators and breathing room between sections
+- Always specify language for code blocks (`dockerfile`, `bash`, etc.)
