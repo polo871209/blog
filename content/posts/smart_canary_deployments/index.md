@@ -81,54 +81,51 @@ Well, that's it! Simple rollouts done! _Of course, you'll need argo-rollouts ins
 
 Let's start by deploying the first version and checking the rollout status:
 
-```bash
-kubectl-argo-rollouts get rollout rpc-server
+<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                    KIND        STATUS     AGE  INFO
-⟳ rpc-server                            Rollout     ✔ Healthy  16s
+<span style="color: #f38ba8;">⟳ rpc-server</span>                            Rollout     <span style="color: #a6e3a1;">✔ Healthy</span>  16s
 └──# revision:1
-   └──⧉ rpc-server-5ff779f75f           ReplicaSet  ✔ Healthy  16s  stable
-      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         ✔ Running  16s  ready:1/1
-      ├──□ rpc-server-5ff779f75f-qn27n  Pod         ✔ Running  16s  ready:1/1
-      └──□ rpc-server-5ff779f75f-vslc6  Pod         ✔ Running  16s  ready:1/1
-```
+   └──<span style="color: #f38ba8;">⧉ rpc-server-5ff779f75f</span>           ReplicaSet  <span style="color: #a6e3a1;">✔ Healthy</span>  16s  stable
+      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         <span style="color: #a6e3a1;">✔ Running</span>  16s  ready:1/1
+      ├──□ rpc-server-5ff779f75f-qn27n  Pod         <span style="color: #a6e3a1;">✔ Running</span>  16s  ready:1/1
+      └──□ rpc-server-5ff779f75f-vslc6  Pod         <span style="color: #a6e3a1;">✔ Running</span>  16s  ready:1/1
+</code></pre>
 
 ---
 
 Now let's deploy a new version of the deployment, and you'll see revision 2 like this:
 
-```bash
-kubectl-argo-rollouts get rollout rpc-server
+<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                    KIND        STATUS     AGE  INFO
-⟳ rpc-server                            Rollout     ॥ Paused   23h
+<span style="color: #f38ba8;">⟳ rpc-server</span>                            Rollout     <span style="color: #fab387;">॥ Paused</span>   23h
 ├──# revision:2
-│  └──⧉ rpc-server-b9d7c8675            ReplicaSet  ✔ Healthy  23h  canary
-│     └──□ rpc-server-b9d7c8675-6lpxh   Pod         ✔ Running  23h  ready:1/1,restarts:1
+│  └──<span style="color: #f38ba8;">⧉ rpc-server-b9d7c8675</span>            ReplicaSet  <span style="color: #a6e3a1;">✔ Healthy</span>  23h  canary
+│     └──□ rpc-server-b9d7c8675-6lpxh   Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:1
 └──# revision:1
-   └──⧉ rpc-server-5ff779f75f           ReplicaSet  ✔ Healthy  23h  stable
-      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         ✔ Running  23h  ready:1/1,restarts:1
-      ├──□ rpc-server-5ff779f75f-qn27n  Pod         ✔ Running  23h  ready:1/1,restarts:2
-      └──□ rpc-server-5ff779f75f-vslc6  Pod         ✔ Running  23h  ready:1/1,restarts:1
-```
+   └──<span style="color: #f38ba8;">⧉ rpc-server-5ff779f75f</span>           ReplicaSet  <span style="color: #a6e3a1;">✔ Healthy</span>  23h  stable
+      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:1
+      ├──□ rpc-server-5ff779f75f-qn27n  Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:2
+      └──□ rpc-server-5ff779f75f-vslc6  Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:1
+</code></pre>
 
 ---
 
 Let's say you've checked the canary status — now we can move to the next step of promoting the deployment:
 
-```bash
-kubectl-argo-rollouts promote rpc-server
+<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> promote rpc-server
 
-# After about 1 minute of waiting, you'll see the second version rolled out completely
-kubectl-argo-rollouts get rollout rpc-server
+<span style="color: #585b70;"># After about 1 minute of waiting, you'll see the second version rolled out completely</span>
+$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                   KIND         STATUS        AGE    INFO
-⟳ rpc-server                           Rollout      ✔ Healthy     23h
+<span style="color: #f38ba8;">⟳ rpc-server</span>                           Rollout      <span style="color: #a6e3a1;">✔ Healthy</span>     23h
 ├──# revision:2
-│  └──⧉ rpc-server-b9d7c8675           ReplicaSet   ✔ Healthy     23h    stable
-│     ├──□ rpc-server-b9d7c8675-ftm8w  Pod          ✔ Running     2m2s   ready:1/1
-│     ├──□ rpc-server-b9d7c8675-4cvbz  Pod          ✔ Running     100s   ready:1/1
-│     └──□ rpc-server-b9d7c8675-dg4z9  Pod          ✔ Running     69s    ready:1/1
+│  └──<span style="color: #f38ba8;">⧉ rpc-server-b9d7c8675</span>           ReplicaSet   <span style="color: #a6e3a1;">✔ Healthy</span>     23h    stable
+│     ├──□ rpc-server-b9d7c8675-ftm8w  Pod          <span style="color: #a6e3a1;">✔ Running</span>     2m2s   ready:1/1
+│     ├──□ rpc-server-b9d7c8675-4cvbz  Pod          <span style="color: #a6e3a1;">✔ Running</span>     100s   ready:1/1
+│     └──□ rpc-server-b9d7c8675-dg4z9  Pod          <span style="color: #a6e3a1;">✔ Running</span>     69s    ready:1/1
 └──# revision:1
-   └──⧉ rpc-server-5ff779f75f          ReplicaSet   • ScaledDown  23h
-```
+   └──<span style="color: #f38ba8;">⧉ rpc-server-5ff779f75f</span>          ReplicaSet   <span style="color: #585b70;">• ScaledDown</span>  23h
+</code></pre>
 
 ### The Problem with Basic Rollouts
 
@@ -138,4 +135,4 @@ Notice something important here — **we're only using replica counts for traffi
 
 For true traffic-based canary deployments, we need a **service mesh** to control the actual request routing, not just pod counts _(there are other ways, of course)_.
 
-Next up: Adding Istio to get precise traffic control and the metrics we need for smart rollbacks.
+## Istio

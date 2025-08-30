@@ -65,12 +65,11 @@ Your main content starts here...
 
 ### Visual Formatting Rules
 
-- **Em dashes (—)** — Use instead of colons in bullet points for better readability
 - **Backticks** — Apply `backquotes` for key phrases, concepts, and inline code
-- **Congo shortcodes** — Use Alert and Badge shortcodes for enhanced formatting
 - **Official documentation** — Reference Congo docs for advanced features:
   - Shortcodes: https://jpanther.github.io/congo/docs/shortcodes/
   - Markdown samples: https://jpanther.github.io/congo/samples/markdown/
 - **Paragraph structure** — Break up long paragraphs into shorter, scannable chunks
 - **White space** — Include visual separators and breathing room between sections
 - Always specify language for code blocks (`dockerfile`, `bash`, etc.)
+- **For bash output** — Use HTML `<pre><code>` blocks with Catppuccin Mocha colors for syntax highlighting
