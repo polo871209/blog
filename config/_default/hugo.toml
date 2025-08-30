@@ -6,6 +6,8 @@ summaryLength = 0
 
 [markup]
 defaultMarkdownHandler = "goldmark"
+[markup.goldmark.renderer]
+unsafe = true
 [markup.highlight]
 lineNos = true
 noClasses = false
