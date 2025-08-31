@@ -32,14 +32,17 @@ description: "Meta description for SEO"
 summary: "Summary for quick intro view for the list view, concise without too much detail"
 tags: ["post", "tech", "tags"] # Array of tags for categorization
 ---
-
 ## TL;DR
 
-[User-provided TL;DR content - only improve wording/clarity when user specifically asks]
-
+User-provided TL;DR content - only improve wording/clarity when user specifically asks
+---
 ## Introduction/Background
 
 Your main content starts here...
+---
+## 📚 References
+
+All the Reference links
 ```
 
 ### Tone and Voice
