@@ -1,10 +1,10 @@
 ---
 date: 2025-08-14
-lastmod: 2025-08-14T10:24:33+08:00
+lastmod: 2025-09-15
 title: "Wolfi Made Easy"
 description: "Discover how Wolfi bridges the gap between scratch containers and bloated base images with glibc compatibility, APK package management, and proactive security patching that fixes vulnerabilities in hours, not days"
 summary: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
-tags: ["container", "wolfi", "security", "docker", "python", chainguard]
+tags: ["containers", "build", "security", "supply-chain"]
 ---
 
 ## TL;DR
@@ -146,7 +146,7 @@ If you're tired of choosing between security and convenience, or between size an
 
 ## 📚 References
 
-- [Wolfi Overview - Chainguard Education](https://edu.chainguard.dev/open-source/wolfi/overview/)
-- [Google Distroless Container Images](https://github.com/GoogleContainerTools/distroless)
-- [Wolfi OS Package Repository](https://github.com/wolfi-dev/os)
-- [Wolfi Security Advisories](https://github.com/wolfi-dev/advisories)
+- [Wolfi overview documentation](https://edu.chainguard.dev/open-source/wolfi/overview/)
+- [Google Distroless container images](https://github.com/GoogleContainerTools/distroless)
+- [Wolfi OS package repository](https://github.com/wolfi-dev/os)
+- [Wolfi security advisories](https://github.com/wolfi-dev/advisories)
