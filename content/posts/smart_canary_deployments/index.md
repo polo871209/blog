@@ -1,18 +1,10 @@
 ---
 title: "Smart Canary Deployments"
 date: 2025-08-31
-lastmod: 2025-08-31
+lastmod: 2025-09-15
 description: "Build intelligent progressive delivery pipelines using Argo Rollouts with Prometheus metrics analysis and automatic rollback capabilities for zero-downtime Kubernetes deployments"
 summary: "Automated progressive delivery with Argo Rollouts, Prometheus metrics, and istio for safe production deployments"
-tags:
-  [
-    "argo-rollouts",
-    "prometheus",
-    "canary",
-    "kubernetes",
-    "devops",
-    "progressive-delivery",
-  ]
+tags: ["kubernetes", "deployment", "observability", "cicd"]
 ShowToc: true
 TocOpen: true
 ---
@@ -317,8 +309,8 @@ Just data-driven, automated progressive delivery with intelligent failure handli
 
 ## 📚 References
 
-- **Argo Rollouts Documentation:** https://argoproj.github.io/argo-rollouts/
-- **Argo Rollouts with Istio:** https://www.youtube.com/watch?v=tnB0TwEqNFA&t=958s
+- [Official Argo Rollouts documentation](https://argoproj.github.io/argo-rollouts/)
+- [Argo Rollouts with Istio tutorial](https://www.youtube.com/watch?v=tnB0TwEqNFA&t=958s)
 
 ---
 

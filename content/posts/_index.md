@@ -6,5 +6,5 @@ cascade:
 ---
 
 {{< lead >}}
-Just sharing the simple solutions that actually work
+Just sharing the simple solutions that actually work. Suggestion are welcome.
 {{< /lead >}}

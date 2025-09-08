@@ -1,10 +1,10 @@
 ---
 title: "Apko: Container Image Builder"
 date: 2025-08-19
-lastmod: 2025-08-19
+lastmod: 2025-09-15
 description: "Learn how Chainguard's apko builds minimal, secure container images from APK packages using declarative YAML configuration with automatic SBOM generation and zero-vulnerability base images"
 summary: "apko builds minimal, secure container images from APK packages using declarative YAML configuration"
-tags: ["apko", "containers", "security", "chainguard", "wolfi", "alpine"]
+tags: ["containers", "build", "security", "supply-chain"]
 ---
 
 ## TL;DR
@@ -143,7 +143,7 @@ I previously maintained a dedicated repository in my organization just for build
 
 ## 📚 References
 
-- **GitHub:** https://github.com/chainguard-dev/apko
-- **Examples:** https://github.com/chainguard-dev/apko/tree/main/examples
-- **Wolfi Packages:** https://packages.wolfi.dev/os
-- **Chainguard Images:** https://github.com/chainguard-images
+- [Official apko repository](https://github.com/chainguard-dev/apko)
+- [Apko configuration examples](https://github.com/chainguard-dev/apko/tree/main/examples)
+- [Wolfi OS packages repository](https://github.com/wolfi-dev/os)
+- [Chainguard distroless images](https://github.com/chainguard-images)
