@@ -1,9 +1,9 @@
-title = "PoLoBlog"
+title = "PoLog"
 
 [params.author]
 name = "Po Lo 🌊"
 image = "img/author.jpg"
-headline = "Just my simple blog"
+headline = "Just my simple site"
 links = [
   { github = "https://github.com/polo871209" },
   { linkedin = "https://linkedin.com/in/polohi" },
