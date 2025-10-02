@@ -9,9 +9,7 @@ tags: ["observability", "prometheus", "kubernetes", "monitoring"]
 
 ## TL;DR
 
-Prometheus works great until it doesn't. Single server, limited retention, no multi-cluster view — you hit the wall fast at scale.
-
-Thanos fixes this by turning Prometheus into a distributed system. Upload metrics to object storage for unlimited retention, query across all clusters from a single interface, and scale horizontally without the usual Prometheus constraints.
+Prometheus doesn't scale well. Thanos solves this by adding object storage for infinite retention, global querying across clusters, and horizontal scalability — all while keeping your existing Prometheus setup.
 
 ---
 
