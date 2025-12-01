@@ -1,6 +1,6 @@
 ---
 date: 2025-08-14
-lastmod: 2025-09-15
+lastmod: 2025-12-01
 title: "Wolfi Made Easy"
 description: "Discover how Wolfi bridges the gap between scratch containers and bloated base images with glibc compatibility, APK package management, and proactive security patching that fixes vulnerabilities in hours, not days"
 summary: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
@@ -101,6 +101,7 @@ RUN apk add --no-cache \
 
 - Starting from a different base image and copying everything over _([here's my 94-line Distroless nightmare](https://gist.github.com/polo871209/559332ba3bd08aa992a46ab2a97a45a6) for context)_
 - Manually downloading and installing packages without a package manager _(debugging nightmare)_
+- Building custom images with Bazel _(see [Understanding Bazel with Distroless](../understanding_bazel_with_distroless) for how Google does it)_
 - Or just giving up and going back to a full OS image🤦‍♂️
 
 > **💡 The Distroless Problem:** You're essentially back to the scratch problem - secure but painfully limiting. Wolfi gives you the security benefits without the "why can't I just install one simple package?" frustration.
@@ -148,5 +149,6 @@ If you're tired of choosing between security and convenience, or between size an
 
 - [Wolfi overview documentation](https://edu.chainguard.dev/open-source/wolfi/overview/)
 - [Google Distroless container images](https://github.com/GoogleContainerTools/distroless)
+- [Understanding Bazel with Distroless](../understanding_bazel_with_distroless) — Deep dive into how Google builds distroless images with Bazel
 - [Wolfi OS package repository](https://github.com/wolfi-dev/os)
 - [Wolfi security advisories](https://github.com/wolfi-dev/advisories)

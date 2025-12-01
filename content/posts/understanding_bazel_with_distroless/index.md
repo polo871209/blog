@@ -5,7 +5,6 @@ lastmod: 2025-11-30
 description: "A comprehensive step-by-step guide to understanding Bazel build system by analyzing the GoogleContainerTools/distroless repository"
 summary: "Learn Bazel fundamentals by exploring how Google builds distroless container images. From MODULE.bazel dependencies to multi-architecture OCI images, understand production-grade Bazel patterns through real-world examples."
 tags: ["bazel", "containers", "distroless", "oci", "docker", "build-systems"]
-draft: true
 ---
 
 ## TL;DR
