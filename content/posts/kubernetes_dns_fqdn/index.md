@@ -9,7 +9,7 @@ tags: ["kubernetes", "dns", "coredns", "networking", "performance"]
 
 ## TL;DR
 
-In Kubernetes, the `ndots:5` setting causes DNS queries for names with fewer than 5 dots to iterate through all search domains. This means `api` triggers 4 DNS queries instead of 1. Using a trailing dot (`api.app.svc.cluster.local.`) forces absolute resolution, reducing DNS load by 75%.
+In Kubernetes, the `ndots:5` setting causes DNS queries for names with fewer than 5 dots to iterate through all search domains. This means using service name like `api` triggers 4 DNS queries instead of 1. Using a trailing dot FQDN `api.app.svc.cluster.local.` forces absolute resolution, reducing DNS load by 75%.
 
 ---
 
