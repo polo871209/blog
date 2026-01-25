@@ -9,11 +9,6 @@ pageRef = "Notes"
 weight = 20
 
 [[main]]
-name = "Projects"
-pageRef = "projects"
-weight = 30
-
-[[main]]
 name = "Tags"
 pageRef = "tags"
 weight = 40
