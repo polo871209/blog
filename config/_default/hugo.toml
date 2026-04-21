@@ -9,7 +9,7 @@ defaultMarkdownHandler = "goldmark"
 [markup.goldmark.renderer]
 unsafe = true
 [markup.highlight]
-lineNos = true
+lineNos = false
 noClasses = false
 
 [pagination]

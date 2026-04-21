@@ -1,0 +1,30 @@
+/* Widen Congo article body. Theme uses Tailwind max-w-prose (65ch).
+   Target the exact class combo from single.html line 44. */
+
+article section > div.max-w-prose,
+article > header.max-w-prose,
+article > footer.max-w-prose {
+  max-width: none !important;
+}
+
+/* Keep TOC sidebar fixed width, don't let it shrink */
+@media (min-width: 1024px) {
+  article section > div.order-first.lg\:order-last {
+    flex-shrink: 0;
+    width: 18rem;
+  }
+}
+
+/* Mermaid fills the wider column */
+.mermaid {
+  max-width: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.mermaid svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
