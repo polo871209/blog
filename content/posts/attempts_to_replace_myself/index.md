@@ -31,7 +31,7 @@ I reused the similar pattern from OpenSRE, vibe coded it and got a test version 
 
 I could convince myself and say it still needs us to validate, or AI still makes mistakes. That is a valid claim and in my current role I can confidently say it still needs my expertise to improve the overall stability. However, we need so much less effort to do our job, not only does this mean we no longer require so many SREs, but also all the fun and fulfillment of being an SRE.
 
-I love this role, but like when I loved being a scuba instructor 5 years ago, I don't know when I will suddenly lose the chance of keep doing this again. I don't think this is so very close yet, but back then I was 23 and I had all the time and passion. I need to think maturely, carefully.
+I love this role, but like when I loved being a scuba instructor 5 years ago, I don't know when I will suddenly lose the chance of keep doing this again. I don't think this is so very close yet, but back then I was 23 and I had all the time and passion. Now I need to think maturely, carefully.
 
 If you are reading until here, cheers. It is fun to write an article without AI.
 
