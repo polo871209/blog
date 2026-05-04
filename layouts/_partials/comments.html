@@ -1,8 +1,9 @@
+{{ with .Site.Params.giscus }}
 <script src="https://giscus.app/client.js"
-        data-repo="polo871209/blog"
-        data-repo-id="R_kgDOPd7LFA"
-        data-category="General"
-        data-category-id="DIC_kwDOPd7LFM4C7LkF"
+        data-repo="{{ .repo }}"
+        data-repo-id="{{ .repoId }}"
+        data-category="{{ .category }}"
+        data-category-id="{{ .categoryId }}"
         data-mapping="pathname"
         data-strict="0"
         data-reactions-enabled="1"
@@ -14,3 +15,4 @@
         crossorigin="anonymous"
         async>
 </script>
+{{ end }}

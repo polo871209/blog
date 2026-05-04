@@ -1,24 +1,14 @@
 [[main]]
-name = "Posts"
-pageRef = "posts"
-weight = 10
+  name = "About"
+  url = "/"
+  weight = 10
 
 [[main]]
-name = "Notes"
-pageRef = "Notes"
-weight = 20
+  name = "Logs"
+  pageRef = "/logs"
+  weight = 20
 
 [[main]]
-name = "Tags"
-pageRef = "tags"
-weight = 40
-
-[[main]]
-identifier = "search"
-weight = 99
-[main.params]
-action = "search"
-icon = "search"
-
-[[footer]]
-action = "appearance"
+  name = "Misc"
+  pageRef = "/misc"
+  weight = 30

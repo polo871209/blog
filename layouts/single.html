@@ -1,0 +1,47 @@
+{{ define "main" }}
+<article class="post">
+  <header class="post-head">
+    <h1>{{ .Title }}</h1>
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      {{ if and .Lastmod (ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02")) }}
+        · updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "2006-01-02" }}</time>
+      {{ end }}
+      {{ with .ReadingTime }} · {{ . }} min read{{ end }}
+    </div>
+    {{ with .Params.tags }}
+      <ul class="tag-list">
+        {{ range . }}<li><a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
+      </ul>
+    {{ end }}
+  </header>
+
+  {{ $tocDefault := ne .Section "misc" }}
+  {{ $tocOn := $tocDefault }}
+  {{ if isset .Params "toc" }}{{ $tocOn = .Params.toc }}{{ end }}
+  {{ if and $tocOn (gt (len .TableOfContents) 0) }}
+    <nav class="toc">
+      <h2>On this page</h2>
+      {{ .TableOfContents }}
+    </nav>
+  {{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-foot">
+    {{ if .Site.Params.giscus.repo }}
+      {{ partial "comments.html" . }}
+    {{ end }}
+  </footer>
+</article>
+
+{{ if .Store.Get "hasMermaid" }}
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  const theme = document.documentElement.getAttribute("data-theme") === "light" ? "default" : "dark";
+  mermaid.initialize({ startOnLoad: true, theme: theme, securityLevel: "loose" });
+</script>
+{{ end }}
+{{ end }}

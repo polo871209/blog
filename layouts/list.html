@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="list">
+  {{ with .Content }}<div class="prose lede">{{ . }}</div>{{ end }}
+  <ul class="post-list">
+    {{ range (.Paginate (.Pages.ByDate.Reverse)).Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          <span class="post-title">{{ .Title }}</span>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+  {{ template "_internal/pagination.html" . }}
+</section>
+{{ end }}

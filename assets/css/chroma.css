@@ -1,0 +1,67 @@
+/* Chroma classes mapped to Kanagawa Wave + Lotus.
+   Hugo emits classes like .chroma .k (keyword), .s (string), etc. */
+
+/* dark (wave) — defaults */
+:root,
+:root[data-theme="dark"] {
+  --c-bg:    #16161D;
+  --c-fg:    #DCD7BA;
+  --c-comm:  #727169;
+  --c-key:   #957FB8; /* oniViolet */
+  --c-str:   #98BB6C; /* springGreen */
+  --c-num:   #FFA066; /* surimiOrange */
+  --c-fn:    #7E9CD8; /* crystalBlue */
+  --c-type:  #7AA89F; /* waveAqua2 */
+  --c-op:    #C0A36E; /* carpYellow */
+  --c-err:   #E82424;
+  --c-name:  #E6C384; /* carpYellow soft */
+  --c-attr:  #7FB4CA;
+}
+:root[data-theme="light"] {
+  --c-bg:    #E5DDB0;
+  --c-fg:    #545464;
+  --c-comm:  #8A8980;
+  --c-key:   #624C83; /* lotusViolet */
+  --c-str:   #6F894E; /* lotusGreen */
+  --c-num:   #B6927B;
+  --c-fn:    #4D699B;
+  --c-type:  #597B75;
+  --c-op:    #836F4A;
+  --c-err:   #C84053;
+  --c-name:  #77713F;
+  --c-attr:  #4D699B;
+}
+
+.chroma { background: var(--c-bg); color: var(--c-fg); }
+.chroma .err { color: var(--c-err); }
+.chroma .lntd { padding: 0; }
+.chroma .lnt, .chroma .ln { color: var(--c-comm); }
+/* keywords */
+.chroma .k, .chroma .kc, .chroma .kd, .chroma .kn, .chroma .kp, .chroma .kr, .chroma .kt { color: var(--c-key); }
+/* names / identifiers */
+.chroma .n  { color: var(--c-fg); }
+.chroma .na { color: var(--c-attr); }
+.chroma .nb, .chroma .bp { color: var(--c-fn); }
+.chroma .nc, .chroma .nn, .chroma .nt { color: var(--c-type); }
+.chroma .nf, .chroma .fm { color: var(--c-fn); }
+.chroma .nv, .chroma .vc, .chroma .vg, .chroma .vi { color: var(--c-name); }
+.chroma .nl, .chroma .ne, .chroma .nx { color: var(--c-fg); }
+.chroma .no { color: var(--c-num); }
+/* literals */
+.chroma .l, .chroma .ld { color: var(--c-fg); }
+.chroma .s, .chroma .sa, .chroma .sb, .chroma .sc, .chroma .dl, .chroma .sd,
+.chroma .s2, .chroma .se, .chroma .sh, .chroma .si, .chroma .sx, .chroma .sr,
+.chroma .s1, .chroma .ss { color: var(--c-str); }
+.chroma .m, .chroma .mb, .chroma .mf, .chroma .mh, .chroma .mi, .chroma .il, .chroma .mo { color: var(--c-num); }
+/* operators / punct */
+.chroma .o, .chroma .ow, .chroma .p { color: var(--c-op); }
+/* comments */
+.chroma .c, .chroma .ch, .chroma .cm, .chroma .c1, .chroma .cs, .chroma .cp, .chroma .cpf {
+  color: var(--c-comm); font-style: italic;
+}
+/* generic */
+.chroma .gd { color: var(--c-err); }
+.chroma .gi { color: var(--c-str); }
+.chroma .gh, .chroma .gu { color: var(--c-fn); font-weight: bold; }
+.chroma .gs { font-weight: bold; }
+.chroma .ge { font-style: italic; }

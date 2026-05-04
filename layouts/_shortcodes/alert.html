@@ -1,0 +1,2 @@
+{{ $kind := .Get 0 | default "info" }}
+<div class="alert alert-{{ $kind }}">{{ .Inner | $.Page.RenderString }}</div>

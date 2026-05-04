@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="32" fill="#363646"/>
+  <!-- stylized kanagawa wave: one curl + crest droplets -->
+  <g fill="none" stroke="#98BB6C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- main wave body, curling left -->
+    <path d="M14 40 C 14 26, 30 22, 38 30 C 44 36, 38 44, 30 42 C 24 40, 24 32, 30 30"/>
+    <!-- crest droplets trailing right -->
+    <path d="M44 26 L48 24"/>
+    <path d="M48 32 L52 30"/>
+  </g>
+</svg>

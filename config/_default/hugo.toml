@@ -1,19 +1,52 @@
 baseURL = "https://polo.is-not-a.dev"
-languageCode = "en"
 
 enableRobotsTXT = true
-summaryLength = 0
+summaryLength = 30
 
 [markup]
-defaultMarkdownHandler = "goldmark"
-[markup.goldmark.renderer]
-unsafe = true
-[markup.highlight]
-lineNos = false
-noClasses = false
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    lineNos = false
+    noClasses = false
+    tabWidth = 2
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
 
 [pagination]
-pagerSize = 15
+  pagerSize = 20
 
 [outputs]
-home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[taxonomies]
+  tag = "tags"
+
+[params]
+  description = "Po Lo's blog"
+
+[params.author]
+  name = "PoLog"
+  initials = "PL"
+  headline = "Just my simple site"
+
+[[params.author.links]]
+  name = "github"
+  url = "https://github.com/polo871209"
+
+[[params.author.links]]
+  name = "linkedin"
+  url = "https://linkedin.com/in/polohi"
+
+[[params.author.links]]
+  name = "email"
+  url = "mailto:qazh0123@gmail.com"
+
+[params.giscus]
+  repo = "polo871209/blog"
+  repoId = "R_kgDOPd7LFA"
+  category = "General"
+  categoryId = "DIC_kwDOPd7LFM4C7LkF"

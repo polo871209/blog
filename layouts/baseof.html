@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  {{ with .OutputFormats.Get "rss" }}
+    <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
+  {{ end }}
+  {{ partial "head/style.html" . }}
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <nav class="nav">
+        <ul>
+          {{ $current := . }}
+          {{ range .Site.Menus.main }}
+            {{ $active := false }}
+            {{ if eq .URL "/" }}
+              {{ $active = $current.IsHome }}
+            {{ else if .PageRef }}
+              {{ $p := site.GetPage .PageRef }}
+              {{ if $p }}
+                {{ $active = or ($current.IsDescendant $p) (eq $current $p) }}
+              {{ end }}
+            {{ end }}
+            <li class="{{ if $active }}active{{ end }}">
+              <a href="{{ with .PageRef }}{{ relref $current . }}{{ else }}{{ .URL | relURL }}{{ end }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+    </aside>
+    <main class="content">
+      <h1 class="site-title"><a href="{{ "/" | relURL }}">{{ .Site.Params.author.name }}</a></h1>
+      {{ block "main" . }}{{ end }}
+      {{ partial "footer.html" . }}
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="about">
+  <div class="prose">
+    {{ if .Content }}
+      {{ .Content }}
+    {{ else }}
+      <p>{{ .Site.Params.author.headline }}</p>
+    {{ end }}
+  </div>
+</article>
+{{ end }}

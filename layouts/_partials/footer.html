@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <span class="copyright">&copy; {{ now.Year }} {{ .Site.Params.author.name }}.</span>
+  {{ with .Site.Params.author.links }}
+    <ul class="social">
+      {{ range . }}
+        <li>
+          <a href="{{ .url }}" rel="me noopener" aria-label="{{ .name }}">
+            {{ partial "icon.html" .name }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</footer>
