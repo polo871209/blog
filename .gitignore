@@ -2,3 +2,7 @@ public
 resources
 .hugo_build.lock
 .DS_Store
+
+# unignore content/logs (overrides global ~/.config/git/ignore "logs/" rule)
+!content/logs/
+!content/logs/**
