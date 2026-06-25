@@ -20,12 +20,10 @@ export const sections = {
   logs: {
     title: "Logs",
     lede: "Just sharing the simple solutions that work.",
-    toc: true,
   },
   misc: {
     title: "Misc",
     lede: "Things that don't fit anywhere else.",
-    toc: false,
   },
 } as const;
 

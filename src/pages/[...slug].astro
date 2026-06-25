@@ -1,6 +1,5 @@
 ---
 import { getCollection, render } from "astro:content";
-import { sections } from "../config";
 import { sectionOf } from "../lib/posts";
 import Post from "../layouts/Post.astro";
 
@@ -11,13 +10,8 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const section = sectionOf(post);
-const { Content, headings } = await render(post);
+const { Content } = await render(post);
 ---
-<Post
-  post={post}
-  headings={headings}
-  section={section}
-  tocDefault={sections[section].toc}
->
+<Post post={post} section={section}>
   <Content />
 </Post>

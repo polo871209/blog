@@ -5,12 +5,12 @@ Custom Astro blog. Kanagawa Wave palette, Fira Code mono. Static output, zero cl
 ## Structure
 
 - **One content collection.** The folder under `src/content/` is the URL section, e.g. `src/content/logs/foo.md` → `/logs/foo/`. To add a section, just make a folder and register it in `sections` (`src/config.ts`).
-- `src/content/logs/*.md` — technical writeups, default TOC ON
-- `src/content/misc/*.md` — reflections, tangents, default TOC OFF
+- `src/content/logs/*.md` — technical writeups
+- `src/content/misc/*.md` — reflections, tangents
 - `src/pages/index.astro` — About homepage (YAML manifest)
 - `src/pages/[section]/index.astro` — section list (dynamic); `src/pages/[...slug].astro` — post pages (dynamic)
 - `src/pages/index.xml.js` — RSS feed
-- `src/config.ts` — site metadata, `sections` (title/lede/toc), nav (derived), social links, giscus
+- `src/config.ts` — site metadata, `sections` (title/lede), nav (derived), social links, giscus
 - `src/lib/posts.ts` — `titleOf` / `sectionOf` / `byDateDesc` helpers
 - `src/styles/main.css` — all styling
 - `astro.config.mjs` — `remarkMermaid` plugin, inline-CSS + lightningcss build tuning
@@ -24,7 +24,6 @@ All optional — a post can have none (title falls back to the humanized filenam
 title: "Post title" # optional; defaults to filename
 date: 2025-08-13 # optional, yyyy-mm-dd
 lastmod: 2025-09-15 # optional; bump on meaningful edits
-# toc: false        # override section default (logs on / misc off)
 ---
 ```
 

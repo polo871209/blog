@@ -1,18 +1,14 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import type { MarkdownHeading } from "astro";
 import BaseLayout from "./BaseLayout.astro";
-import Toc from "../components/Toc.astro";
 import Giscus from "../components/Giscus.astro";
 import { titleOf, iso } from "../lib/posts";
 
 interface Props {
-  post: CollectionEntry<"logs"> | CollectionEntry<"misc">;
-  headings: MarkdownHeading[];
-  tocDefault: boolean;
+  post: CollectionEntry<"posts">;
   section: string;
 }
-const { post, headings, tocDefault, section } = Astro.props;
+const { post, section } = Astro.props;
 const fm = post.data;
 const title = titleOf(post);
 
@@ -21,7 +17,6 @@ const readingTime = Math.max(1, Math.round(words / 200));
 
 const updated =
   fm.lastmod && (!fm.date || iso(fm.lastmod) !== iso(fm.date));
-const tocOn = fm.toc ?? tocDefault;
 ---
 <BaseLayout title={title} section={section}>
   <article class="post">
@@ -38,8 +33,6 @@ const tocOn = fm.toc ?? tocDefault;
         {`${fm.date || updated ? " · " : ""}${readingTime} min read`}
       </div>
     </header>
-
-    {tocOn && <Toc headings={headings} />}
 
     <div class="prose"><slot /></div>
 
