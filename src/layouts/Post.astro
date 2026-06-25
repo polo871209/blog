@@ -1,0 +1,67 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import BaseLayout from "./BaseLayout.astro";
+import Toc from "../components/Toc.astro";
+import Giscus from "../components/Giscus.astro";
+
+interface Props {
+  post: CollectionEntry<"logs"> | CollectionEntry<"misc">;
+  headings: MarkdownHeading[];
+  tocDefault: boolean;
+  section: string;
+}
+const { post, headings, tocDefault, section } = Astro.props;
+const fm = post.data;
+
+const words = post.body?.split(/\s+/).filter(Boolean).length ?? 0;
+const readingTime = Math.max(1, Math.round(words / 200));
+
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+const updated = fm.lastmod && iso(fm.lastmod) !== iso(fm.date);
+const tocOn = fm.toc ?? tocDefault;
+---
+<BaseLayout title={fm.title} description={fm.summary} section={section}>
+  <article class="post">
+    <header class="post-head">
+      <h1>{fm.title}</h1>
+      <div class="post-meta">
+        <time datetime={iso(fm.date)}>{iso(fm.date)}</time>
+        {updated && (
+          <Fragment>
+            {" · updated "}
+            <time datetime={iso(fm.lastmod!)}>{iso(fm.lastmod!)}</time>
+          </Fragment>
+        )}
+        {` · ${readingTime} min read`}
+      </div>
+      {fm.tags.length > 0 && (
+        <ul class="tag-list">
+          {fm.tags.map((t) => (
+            <li><a href={`/tags/${t}/`}>{t}</a></li>
+          ))}
+        </ul>
+      )}
+    </header>
+
+    {tocOn && <Toc headings={headings} />}
+
+    <div class="prose"><slot /></div>
+
+    <footer class="post-foot"><Giscus /></footer>
+  </article>
+
+  <script>
+    if (document.querySelector(".mermaid")) {
+      import(
+        "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"
+      ).then(({ default: mermaid }) =>
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: "dark",
+          securityLevel: "loose",
+        }),
+      );
+    }
+  </script>
+</BaseLayout>

@@ -1,2 +1,2 @@
 [tools]
-hugo = "latest"
+node = "26"

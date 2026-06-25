@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Code } from "astro:components";
+
+const manifest = `apiVersion: v28
+kind: Human
+metadata:
+  name: Po
+spec:
+  title:
+    current: "Site Reliability Engineer"
+    previous: "Scuba Instructor"
+  location:
+    current: Malaysia
+    born: Taiwan`;
+---
+<BaseLayout section="home">
+  <article class="about">
+    <div class="prose">
+      <div class="manifest">
+        <Code code={manifest} lang="yaml" theme="kanagawa-wave" />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
