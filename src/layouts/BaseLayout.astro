@@ -5,12 +5,10 @@ import "../styles/main.css";
 
 interface Props {
   title?: string;
-  description?: string;
   section?: string;
 }
-const { title, description, section = "home" } = Astro.props;
+const { title, section = "home" } = Astro.props;
 const pageTitle = title ? `${title} · ${site.title}` : site.title;
-const desc = description ?? site.description;
 ---
 <!doctype html>
 <html lang="en">
@@ -18,7 +16,7 @@ const desc = description ?? site.description;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <meta name="description" content={desc} />
+    <meta name="description" content={site.description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -35,7 +33,7 @@ const desc = description ?? site.description;
           <ul>
             {nav.map((item) => (
               <li class={section === item.match ? "active" : ""}>
-                <a href={item.href}>{item.name}</a>
+                <a href={item.href} aria-current={section === item.match ? "page" : undefined}>{item.name}</a>
               </li>
             ))}
           </ul>

@@ -11,7 +11,7 @@ Custom Astro blog. Kanagawa Wave palette, Fira Code mono. Static output, zero cl
 - `src/pages/[section]/index.astro` — section list (dynamic); `src/pages/[...slug].astro` — post pages (dynamic)
 - `src/pages/index.xml.js` — RSS feed
 - `src/config.ts` — site metadata, `sections` (title/lede), nav (derived), social links, giscus
-- `src/lib/posts.ts` — `titleOf` / `sectionOf` / `byDateDesc` helpers
+- `src/lib/posts.ts` — `titleOf` / `sectionOf` / `byDateDesc` / `iso` helpers
 - `src/styles/main.css` — all styling
 - `astro.config.mjs` — `remarkMermaid` plugin, inline-CSS + lightningcss build tuning
 
@@ -32,6 +32,7 @@ Body skeleton: `## TL;DR` → `---` → main content with H2/H3 → `---` → `#
 ## Authoring helpers
 
 - Code highlighting: Shiki, `kanagawa-wave` theme. Always specify a fenced language.
+- Raw terminal output: hand-write `<pre><code class="language-x">...</code></pre>` HTML when Shiki highlighting hurts readability (e.g. colorize only a value with an inline `<span style="color:#...">`). These pass through unhighlighted by design.
 - Mermaid: a ```mermaid fenced block (the remark plugin turns it into a rendered diagram).
 - Callouts: raw HTML `<div class="alert">...</div>` (or `alert-error`). Markdown does not parse inside, so write inline HTML (`<strong>`, `<code>`).
 - Cross-links between posts: absolute, e.g. `/logs/wolfi_made_easy/`.

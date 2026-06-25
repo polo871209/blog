@@ -22,6 +22,10 @@ export default defineConfig({
   build: { inlineStylesheets: "always" },
   vite: { build: { cssMinify: "lightningcss" } },
   markdown: {
+    // NOTE: remarkPlugins is "deprecated" in Astro 7 in favor of a custom
+    // `processor`, but a custom processor drops Astro's built-in Shiki +
+    // heading-id + raw-HTML steps. Stay on the supported path until Astro
+    // ships a clean way to extend the default pipeline.
     remarkPlugins: [remarkMermaid],
     shikiConfig: { theme: "kanagawa-wave", wrap: false },
   },

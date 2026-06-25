@@ -4,6 +4,7 @@ import type { Section } from "../config";
 export type Post = CollectionEntry<"posts">;
 
 // id is "<section>/<slug>", e.g. "logs/wolfi_made_easy".
+// The folder must be registered in `sections` (config.ts) to get a list page + nav entry.
 export const sectionOf = (post: Post) => post.id.split("/")[0] as Section;
 
 // Title falls back to a humanized file slug when frontmatter omits it.
