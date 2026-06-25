@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import Giscus from "../components/Giscus.astro";
+import { titleOf, iso } from "../lib/posts";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+  section: string;
+}
+const { post, section } = Astro.props;
+const fm = post.data;
+const title = titleOf(post);
+
+const words = post.body?.split(/\s+/).filter(Boolean).length ?? 0;
+const readingTime = Math.max(1, Math.round(words / 200));
+
+const updated =
+  fm.lastmod && (!fm.date || iso(fm.lastmod) !== iso(fm.date));
+---
+<BaseLayout title={title} section={section}>
+  <article class="post">
+    <header class="post-head">
+      <h1>{title}</h1>
+      <div class="post-meta">
+        {fm.date && <time datetime={iso(fm.date)}>{iso(fm.date)}</time>}
+        {updated && (
+          <Fragment>
+            {fm.date ? " · updated " : "updated "}
+            <time datetime={iso(fm.lastmod!)}>{iso(fm.lastmod!)}</time>
+          </Fragment>
+        )}
+        {`${fm.date || updated ? " · " : ""}${readingTime} min read`}
+      </div>
+    </header>
+
+    <div class="prose"><slot /></div>
+
+    <footer class="post-foot"><Giscus /></footer>
+  </article>
+
+  <script>
+    if (document.querySelector(".mermaid")) {
+      import(
+        "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"
+      ).then(({ default: mermaid }) =>
+        mermaid.initialize({
+          startOnLoad: true,
+          theme: "dark",
+          securityLevel: "loose",
+        }),
+      );
+    }
+  </script>
+</BaseLayout>

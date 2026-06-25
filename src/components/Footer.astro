@@ -1,0 +1,19 @@
+---
+import { site } from "../config";
+import Icon from "./Icon.astro";
+---
+<footer class="site-footer">
+  <span class="copyright">&copy; {new Date().getFullYear()} {site.author.name}.</span>
+  <ul class="social">
+    {site.links.map((l) => (
+      <li>
+        <a href={l.url} rel="me noopener" aria-label={l.name}>
+          <Icon name={l.name} />
+        </a>
+      </li>
+    ))}
+    <li>
+      <a href="/index.xml" aria-label="rss"><Icon name="rss" /></a>
+    </li>
+  </ul>
+</footer>

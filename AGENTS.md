@@ -1,56 +1,42 @@
-# Hugo Blog Guide
+# Astro Blog Guide
 
-Custom Hugo blog. Kanagawa Wave palette, Fira Code mono.
+Astro static blog. Kanagawa Wave palette, Fira Code mono. Zero client JS except mermaid + giscus on posts. `npm run dev | build | preview`.
 
-## Sections
+## Layout
 
-- **Logs** (`content/logs/`) — technical writeups, default TOC ON
-- **Misc** (`content/misc/`) — reflections, tangents, default TOC OFF
-- **About** (`content/_index.md`) — homepage
+- One collection: the folder under `src/content/` is the URL section, e.g. `logs/foo.md` -> `/logs/foo/`. New section = new folder + entry in `sections` (`src/config.ts`).
+- `src/content/{logs,misc}/*.md` -- posts
+- `src/pages/` -- `index.astro` (About), `[section]/index.astro` (lists), `[...slug].astro` (posts), `index.xml.js` (RSS)
+- `src/config.ts` -- site meta, `sections`, derived nav, giscus
+- `src/lib/posts.ts` -- `titleOf` / `sectionOf` / `byDateDesc` / `iso`
+- `src/styles/main.css` -- all styling
+- `astro.config.mjs` -- `remarkMermaid`, inline-CSS + lightningcss
 
-## Post Frontmatter
+## Frontmatter
+
+All optional (no frontmatter = title from filename, undated sorts last):
 
 ```yaml
 ---
 title: "Post title"
-date: 2025-08-13           # publish date, yyyy-mm-dd
-lastmod: 2025-09-15        # bump on every meaningful edit
-summary: "Concise list-view summary (also used as SEO meta description)"
-tags: ["specific-tool", "domain"]   # max 4
-# toc: false               # uncomment to disable auto-TOC
+date: 2025-08-13
+lastmod: 2025-09-15 # bump on meaningful edits
 ---
 ```
 
-Body skeleton: `## TL;DR` → `---` → main content with H2/H3 → `---` → `## References`.
+Body: `## TL;DR` -> `---` -> H2/H3 content -> `---` -> `## References`.
 
-## Tags
+## Authoring
 
-- Max **4** per post
-- **Specific over generic** — `argo-rollouts` not `deployment`, `prometheus` not `monitoring`
-- **No catch-alls** — `build`, `infrastructure`, `cicd-tools`, `tooling`, `devops`
-- **No overlaps** — if tagged `containers`, don't also add `oci`/`docker`
-- **Format** — lowercase, hyphenated: `service-mesh`, `supply-chain`
+- Fenced code: always tag the language (Shiki, `kanagawa-wave`).
+- Raw terminal output: hand-write `<pre><code class="language-x">` with inline `<span style="color:#...">` to colorize; passes through unhighlighted.
+- Mermaid: ```mermaid fence.
+- Callouts: `<div class="alert">` / `alert-error` (raw HTML inside, markdown won't parse).
+- Cross-links: absolute, `/logs/<slug>/`.
 
-## Tone & Style
+## Content
 
-- Audience: technical pros, assume familiarity
-- Voice: fluent, casual, direct
-- **No emojis** in posts
-- Backticks for inline code, tools, key phrases
-- Short paragraphs, visual separators between sections
-- Code blocks: always specify language
-- Raw terminal output: `<pre><code>` HTML blocks when syntax highlighting hurts readability
-
-## TL;DR Rule
-
-User provides TL;DR. Do not write from scratch. Only adjust wording when explicitly asked.
-
-## Technical Accuracy
-
-Verify CLI examples (`--help` or run them). Cross-check official docs. Don't invent flags.
-
-## Shortcodes
-
-- `{{< lead >}}...{{< /lead >}}` — italic intro
-- `{{< alert "info|error" >}}...{{< /alert >}}` — callout box
-- `{{< mermaid >}}...{{< /mermaid >}}` — mermaid diagrams
+- Technical audience, assume familiarity. Fluent, casual, direct. No emojis.
+- Backticks for code/tools. Short paragraphs.
+- TL;DR is user-provided -- never write from scratch, only reword when asked.
+- Verify CLI flags (`--help` / docs); don't invent.

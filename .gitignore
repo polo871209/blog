@@ -1,8 +1,17 @@
-public
-resources
-.hugo_build.lock
+# build output
+dist/
+.astro/
+
+# deps
+node_modules/
+
+# env
+.env
+.env.production
+
+# os
 .DS_Store
 
-# unignore content/logs (overrides global ~/.config/git/ignore "logs/" rule)
-!content/logs/
-!content/logs/**
+# global ~/.config/git/ignore has `logs/`; keep every logs/ dir under src/
+!src/**/logs/
+!src/**/logs/**

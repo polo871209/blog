@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { sections, type Section } from "../../config";
+import { titleOf, byDateDesc, sectionOf, iso } from "../../lib/posts";
+
+export async function getStaticPaths() {
+  return Object.keys(sections).map((section) => ({ params: { section } }));
+}
+
+const section = Astro.params.section as Section;
+const meta = sections[section];
+const posts = (await getCollection("posts"))
+  .filter((p) => sectionOf(p) === section)
+  .sort(byDateDesc);
+---
+<BaseLayout title={meta.title} section={section}>
+  <section class="list">
+    <div class="prose lede"><p>{meta.lede}</p></div>
+    <ul class="post-list">
+      {posts.map((p) => (
+        <li>
+          <a href={`/${p.id}/`}>
+            {p.data.date && <time datetime={iso(p.data.date)}>{iso(p.data.date)}</time>}
+            <span class="post-title">{titleOf(p)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
