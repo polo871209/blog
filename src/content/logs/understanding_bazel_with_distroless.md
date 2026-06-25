@@ -2,9 +2,6 @@
 title: "Understanding Bazel with Distroless"
 date: 2025-11-30
 lastmod: 2025-11-30
-summary: "Learn Bazel fundamentals by exploring how Google builds distroless container images. From MODULE.bazel dependencies to multi-architecture OCI images, understand production-grade Bazel patterns through real-world examples."
-tags: ["bazel", "containers", "distroless"]
-aliases: ["/posts/understanding_bazel_with_distroless/"]
 ---
 
 ## TL;DR

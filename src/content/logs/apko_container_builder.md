@@ -2,9 +2,6 @@
 title: "Apko: Container Image Builder"
 date: 2025-08-19
 lastmod: 2025-09-15
-summary: "apko builds minimal, secure container images from APK packages using declarative YAML configuration"
-tags: ["containers", "apko", "security", "supply-chain"]
-aliases: ["/posts/apko_container_builder/"]
 ---
 
 ## TL;DR

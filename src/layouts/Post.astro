@@ -23,7 +23,7 @@ const updated =
   fm.lastmod && (!fm.date || iso(fm.lastmod) !== iso(fm.date));
 const tocOn = fm.toc ?? tocDefault;
 ---
-<BaseLayout title={title} description={fm.summary} section={section}>
+<BaseLayout title={title} section={section}>
   <article class="post">
     <header class="post-head">
       <h1>{title}</h1>
@@ -37,13 +37,6 @@ const tocOn = fm.toc ?? tocDefault;
         )}
         {`${fm.date || updated ? " · " : ""}${readingTime} min read`}
       </div>
-      {fm.tags.length > 0 && (
-        <ul class="tag-list">
-          {fm.tags.map((t) => (
-            <li><a href={`/tags/${t}/`}>{t}</a></li>
-          ))}
-        </ul>
-      )}
     </header>
 
     {tocOn && <Toc headings={headings} />}

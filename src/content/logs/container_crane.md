@@ -2,9 +2,6 @@
 title: "Crane: Remote Container Swiss Army Knife"
 date: 2025-09-08
 lastmod: 2025-09-08
-summary: "Explore crane, Google's lightweight CLI for remote container registry operations. Manipulate images, copy between registries, and add layers without local Docker pulls."
-tags: ["containers", "registry", "cicd"]
-aliases: ["/posts/container_crane/"]
 ---
 
 ## TL;DR

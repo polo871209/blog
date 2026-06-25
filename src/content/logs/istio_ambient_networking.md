@@ -2,9 +2,6 @@
 title: "Istio Ambient Mesh Networking: A Deep Dive"
 date: 2026-04-21
 lastmod: 2026-04-21
-summary: "Ambient mode removes sidecars and uses a node-level proxy (ztunnel) plus optional waypoints. This post explains how traffic is captured, encrypted with HBONE, and routed through the mesh, with hands-on verification on a real node"
-tags: ["istio", "kubernetes", "service-mesh", "networking"]
-aliases: ["/posts/istio_ambient_networking/"]
 ---
 
 ## TL;DR

@@ -4,26 +4,27 @@ Custom Astro blog. Kanagawa Wave palette, Fira Code mono. Static output, zero cl
 
 ## Structure
 
+- **One content collection.** The folder under `src/content/` is the URL section, e.g. `src/content/logs/foo.md` → `/logs/foo/`. To add a section, just make a folder and register it in `sections` (`src/config.ts`).
 - `src/content/logs/*.md` — technical writeups, default TOC ON
 - `src/content/misc/*.md` — reflections, tangents, default TOC OFF
 - `src/pages/index.astro` — About homepage (YAML manifest)
-- `src/pages/{logs,misc}/index.astro` — section lists; `[...slug].astro` — post pages
-- `src/pages/tags/[tag].astro` — tag pages
+- `src/pages/[section]/index.astro` — section list (dynamic); `src/pages/[...slug].astro` — post pages (dynamic)
 - `src/pages/index.xml.js` — RSS feed
-- `src/config.ts` — site metadata, nav, social links, giscus config
+- `src/config.ts` — site metadata, `sections` (title/lede/toc), nav (derived), social links, giscus
+- `src/lib/posts.ts` — `titleOf` / `sectionOf` / `byDateDesc` helpers
 - `src/styles/main.css` — all styling
-- `astro.config.mjs` — `remarkMermaid` plugin + `/posts/*` redirects (old Hugo permalinks)
+- `astro.config.mjs` — `remarkMermaid` plugin, inline-CSS + lightningcss build tuning
 
 ## Post Frontmatter
 
+All optional — a post can have none (title falls back to the humanized filename, undated posts sort last).
+
 ```yaml
 ---
-title: "Post title"
-date: 2025-08-13 # publish date, yyyy-mm-dd
-lastmod: 2025-09-15 # bump on every meaningful edit
-summary: "Concise list-view summary (also used as SEO meta description)"
-tags: ["specific-tool", "domain"] # max 4
-# toc: false               # override default-on (logs) / default-off (misc)
+title: "Post title" # optional; defaults to filename
+date: 2025-08-13 # optional, yyyy-mm-dd
+lastmod: 2025-09-15 # optional; bump on meaningful edits
+# toc: false        # override section default (logs on / misc off)
 ---
 ```
 
@@ -35,14 +36,6 @@ Body skeleton: `## TL;DR` → `---` → main content with H2/H3 → `---` → `#
 - Mermaid: a ```mermaid fenced block (the remark plugin turns it into a rendered diagram).
 - Callouts: raw HTML `<div class="alert">...</div>` (or `alert-error`). Markdown does not parse inside, so write inline HTML (`<strong>`, `<code>`).
 - Cross-links between posts: absolute, e.g. `/logs/wolfi_made_easy/`.
-
-## Tags
-
-- Max **4** per post
-- **Specific over generic** — `argo-rollouts` not `deployment`, `prometheus` not `monitoring`
-- **No catch-alls** — `build`, `infrastructure`, `cicd-tools`, `tooling`, `devops`
-- **No overlaps** — if tagged `containers`, don't also add `oci`/`docker`
-- **Format** — lowercase, hyphenated: `service-mesh`, `supply-chain`
 
 ## Tone & Style
 

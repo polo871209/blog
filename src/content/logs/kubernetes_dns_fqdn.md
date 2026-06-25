@@ -2,9 +2,6 @@
 title: "Kubernetes DNS: Why FQDNs Matter"
 date: 2026-01-11
 lastmod: 2026-01-11
-summary: "Learn how Kubernetes DNS resolution works, the critical difference between short names and FQDNs, and why trailing dots reduce DNS queries from 4 to 1"
-tags: ["kubernetes", "dns", "coredns", "networking"]
-aliases: ["/posts/kubernetes_dns_fqdn/"]
 ---
 
 ## TL;DR

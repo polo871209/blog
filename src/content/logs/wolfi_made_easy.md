@@ -2,9 +2,6 @@
 date: 2025-08-14
 lastmod: 2025-12-01
 title: "Wolfi Made Easy"
-summary: "A practical guide to using Wolfi - the minimal, secure container base image that gives you package management without the bloat"
-tags: ["containers", "wolfi", "security", "supply-chain"]
-aliases: ["/posts/wolfi_made_easy/"]
 ---
 
 ## TL;DR

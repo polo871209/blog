@@ -2,8 +2,6 @@
 title: "eBPF & Cilium"
 date: 2025-11-29
 lastmod: 2025-11-29
-tags: ["ebpf", "cilium", "kubernetes", "networking"]
-aliases: ["/posts/ebpf_cilium/"]
 ---
 
 ## What is eBPF

@@ -2,9 +2,6 @@
 title: "The Pause Container: Kubernetes' Silent Foundation"
 date: 2025-12-26
 lastmod: 2025-12-26
-summary: "Explore how Kubernetes uses pause containers as the foundation for pod networking, namespace sharing, and resource management across multiple containers"
-tags: ["kubernetes", "containers", "networking"]
-aliases: ["/posts/pause_container_kubernetes/"]
 ---
 
 ## TL;DR

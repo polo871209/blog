@@ -2,9 +2,6 @@
 title: "Smart Canary Deployments"
 date: 2025-08-31
 lastmod: 2025-09-15
-summary: "Automated progressive delivery with Argo Rollouts, Prometheus metrics, and istio for safe production deployments"
-tags: ["kubernetes", "argo-rollouts", "istio", "cicd"]
-aliases: ["/posts/smart_canary_deployments/"]
 ---
 
 ## TL;DR

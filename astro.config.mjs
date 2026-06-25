@@ -18,23 +18,11 @@ function remarkMermaid() {
 
 export default defineConfig({
   site: "https://polo.is-not-a.dev",
+  // Inline the (tiny) stylesheet into each page -> no render-blocking CSS request.
+  build: { inlineStylesheets: "always" },
+  vite: { build: { cssMinify: "lightningcss" } },
   markdown: {
     remarkPlugins: [remarkMermaid],
     shikiConfig: { theme: "kanagawa-wave", wrap: false },
-  },
-  // Preserve old Hugo /posts/<slug>/ permalinks (frontmatter aliases).
-  redirects: {
-    "/posts/apko_container_builder/": "/logs/apko_container_builder/",
-    "/posts/container_crane/": "/logs/container_crane/",
-    "/posts/istio_ambient_networking/": "/logs/istio_ambient_networking/",
-    "/posts/scaling_prometheus_with_thanos/":
-      "/logs/scaling_prometheus_with_thanos/",
-    "/posts/smart_canary_deployments/": "/logs/smart_canary_deployments/",
-    "/posts/understanding_bazel_with_distroless/":
-      "/logs/understanding_bazel_with_distroless/",
-    "/posts/wolfi_made_easy/": "/logs/wolfi_made_easy/",
-    "/posts/ebpf_cilium/": "/logs/ebpf_cilium/",
-    "/posts/kubernetes_dns_fqdn/": "/logs/kubernetes_dns_fqdn/",
-    "/posts/pause_container_kubernetes/": "/logs/pause_container_kubernetes/",
   },
 });

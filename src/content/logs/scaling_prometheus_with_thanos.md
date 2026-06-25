@@ -2,9 +2,6 @@
 title: "Scaling Prometheus with Thanos"
 date: 2025-10-02
 lastmod: 2025-10-02
-summary: "Deploy Thanos sidecar with Prometheus for unlimited metric retention, multi-cluster querying, and object storage integration"
-tags: ["prometheus", "thanos", "kubernetes", "observability"]
-aliases: ["/posts/scaling_prometheus_with_thanos/"]
 ---
 
 ## TL;DR

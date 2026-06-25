@@ -2,7 +2,6 @@
 title: "I attempted to replace myself and found it successful"
 date: 2026-05-02
 lastmod: 2026-05-02
-summary: "Reflection of my career, you may find it TMI"
 ---
 
 ## WHY

@@ -67,11 +67,11 @@ hr {
 
 /* ---------- layout ---------- */
 .layout {
-  max-width: 900px;
+  max-width: 1040px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 3rem;
+  grid-template-columns: 150px 1fr;
+  gap: 1.75rem;
   padding: 4.5rem 2rem;
   align-items: start;
 }
@@ -116,7 +116,7 @@ hr {
 
 .content {
   min-width: 0;
-  max-width: 680px;
+  max-width: 780px;
 }
 
 /* ---------- typography ---------- */
@@ -256,27 +256,6 @@ hr {
   color: var(--muted);
   font-size: 0.8rem;
 }
-.tag-list {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.tag-list a {
-  font-size: 0.75rem;
-  color: var(--fg-dim);
-  background: var(--bg-soft);
-  padding: 0.1rem 0.55rem;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-}
-.tag-list a:hover {
-  color: var(--accent-2);
-  border-color: var(--accent-2);
-}
-
 .toc {
   border-left: 2px solid var(--border);
   padding: 0.25rem 0 0.25rem 1rem;
@@ -305,10 +284,6 @@ hr {
   color: var(--accent-2);
 }
 
-.term-head {
-  font-size: 1.3rem;
-  margin: 0 0 2rem;
-}
 .post-foot {
   margin-top: 3.5rem;
   padding-top: 2rem;

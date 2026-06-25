@@ -13,9 +13,29 @@ export const site = {
     category: "General",
     categoryId: "DIC_kwDOPd7LFM4C7LkF",
   },
-  nav: [
-    { name: "About", href: "/", match: "home" },
-    { name: "Logs", href: "/logs/", match: "logs" },
-    { name: "Misc", href: "/misc/", match: "misc" },
-  ],
 } as const;
+
+// Sections == folders under src/content/. Drives routes, nav, and list pages.
+export const sections = {
+  logs: {
+    title: "Logs",
+    lede: "Just sharing the simple solutions that work.",
+    toc: true,
+  },
+  misc: {
+    title: "Misc",
+    lede: "Things that don't fit anywhere else.",
+    toc: false,
+  },
+} as const;
+
+export type Section = keyof typeof sections;
+
+export const nav = [
+  { name: "About", href: "/", match: "home" },
+  ...Object.entries(sections).map(([key, s]) => ({
+    name: s.title,
+    href: `/${key}/`,
+    match: key,
+  })),
+];

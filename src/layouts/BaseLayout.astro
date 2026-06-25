@@ -1,5 +1,5 @@
 ---
-import { site } from "../config";
+import { site, nav } from "../config";
 import Footer from "../components/Footer.astro";
 import "../styles/main.css";
 
@@ -33,7 +33,7 @@ const desc = description ?? site.description;
         <a class="site-title" href="/">{site.author.name}</a>
         <nav class="nav">
           <ul>
-            {site.nav.map((item) => (
+            {nav.map((item) => (
               <li class={section === item.match ? "active" : ""}>
                 <a href={item.href}>{item.name}</a>
               </li>
