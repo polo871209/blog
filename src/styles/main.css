@@ -84,26 +84,13 @@ hr {
   gap: 2rem;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-/* frame 0 of the 3-frame merman sheet (288x96): show 1/3 of the width */
-.site-mark {
-  flex: none;
-  width: 2.4rem;
-  height: 2.4rem;
-  background: url("/sprites/merman.png") 0 0 / 300% 100% no-repeat;
-  image-rendering: pixelated;
-}
 .site-title {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg);
 }
-.brand:hover .site-title {
+.site-title:hover {
   color: var(--accent-2);
 }
 
@@ -214,29 +201,6 @@ hr {
 }
 .prose th {
   background: var(--bg-soft);
-}
-
-/* about: animated pixel merman idle loop */
-.about-hero {
-  width: 96px;
-  height: 96px;
-  margin-bottom: 1.5rem;
-  background: url("/sprites/merman.png") 0 0 / 300% 100% no-repeat;
-  image-rendering: pixelated;
-  animation: merman-swim 0.8s steps(3) infinite;
-}
-@keyframes merman-swim {
-  from {
-    background-position-x: 0%;
-  }
-  to {
-    background-position-x: 100%;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .about-hero {
-    animation: none;
-  }
 }
 
 /* about manifest: borderless inline yaml */

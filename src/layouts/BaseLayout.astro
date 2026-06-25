@@ -26,10 +26,7 @@ const pageTitle = title ? `${title} · ${site.title}` : site.title;
   <body>
     <div class="layout">
       <aside class="sidebar">
-        <a class="brand" href="/">
-          <span class="site-mark" aria-hidden="true"></span>
-          <span class="site-title">{site.author.name}</span>
-        </a>
+        <a class="site-title" href="/">{site.author.name}</a>
         <nav class="nav">
           <ul>
             {nav.map((item) => (
