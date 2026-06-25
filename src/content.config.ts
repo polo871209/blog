@@ -1,14 +1,16 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
+// Everything optional: a post can ship with no frontmatter at all.
+// title -> humanized filename, date -> omitted, tags -> none.
 const postSchema = z.object({
-  title: z.string(),
-  date: z.coerce.date(),
+  title: z.string().optional(),
+  date: z.coerce.date().optional(),
   lastmod: z.coerce.date().optional(),
   summary: z.string().optional(),
   tags: z.array(z.string()).default([]),
   toc: z.boolean().optional(),
-  aliases: z.array(z.string()).optional(),
 });
 
 const logs = defineCollection({

@@ -4,6 +4,7 @@ import type { MarkdownHeading } from "astro";
 import BaseLayout from "./BaseLayout.astro";
 import Toc from "../components/Toc.astro";
 import Giscus from "../components/Giscus.astro";
+import { titleOf, iso } from "../lib/posts";
 
 interface Props {
   post: CollectionEntry<"logs"> | CollectionEntry<"misc">;
@@ -13,27 +14,28 @@ interface Props {
 }
 const { post, headings, tocDefault, section } = Astro.props;
 const fm = post.data;
+const title = titleOf(post);
 
 const words = post.body?.split(/\s+/).filter(Boolean).length ?? 0;
 const readingTime = Math.max(1, Math.round(words / 200));
 
-const iso = (d: Date) => d.toISOString().slice(0, 10);
-const updated = fm.lastmod && iso(fm.lastmod) !== iso(fm.date);
+const updated =
+  fm.lastmod && (!fm.date || iso(fm.lastmod) !== iso(fm.date));
 const tocOn = fm.toc ?? tocDefault;
 ---
-<BaseLayout title={fm.title} description={fm.summary} section={section}>
+<BaseLayout title={title} description={fm.summary} section={section}>
   <article class="post">
     <header class="post-head">
-      <h1>{fm.title}</h1>
+      <h1>{title}</h1>
       <div class="post-meta">
-        <time datetime={iso(fm.date)}>{iso(fm.date)}</time>
+        {fm.date && <time datetime={iso(fm.date)}>{iso(fm.date)}</time>}
         {updated && (
           <Fragment>
-            {" · updated "}
+            {fm.date ? " · updated " : "updated "}
             <time datetime={iso(fm.lastmod!)}>{iso(fm.lastmod!)}</time>
           </Fragment>
         )}
-        {` · ${readingTime} min read`}
+        {`${fm.date || updated ? " · " : ""}${readingTime} min read`}
       </div>
       {fm.tags.length > 0 && (
         <ul class="tag-list">

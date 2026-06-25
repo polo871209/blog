@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { titleOf, iso } from "../../lib/posts";
 
 export async function getStaticPaths() {
   const logs = (await getCollection("logs")).map((p) => ({ p, section: "logs" }));
@@ -16,13 +17,15 @@ export async function getStaticPaths() {
       tag,
       posts: all
         .filter(({ p }) => p.data.tags.includes(tag))
-        .sort((a, b) => b.p.data.date.getTime() - a.p.data.date.getTime()),
+        .sort(
+          (a, b) =>
+            (b.p.data.date?.getTime() ?? 0) - (a.p.data.date?.getTime() ?? 0),
+        ),
     },
   }));
 }
 
 const { tag, posts } = Astro.props;
-const iso = (d: Date) => d.toISOString().slice(0, 10);
 ---
 <BaseLayout title={`#${tag}`}>
   <section class="list">
@@ -31,8 +34,8 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
       {posts.map(({ p, section }) => (
         <li>
           <a href={`/${section}/${p.id}/`}>
-            <time datetime={iso(p.data.date)}>{iso(p.data.date)}</time>
-            <span class="post-title">{p.data.title}</span>
+            {p.data.date && <time datetime={iso(p.data.date)}>{iso(p.data.date)}</time>}
+            <span class="post-title">{titleOf(p)}</span>
           </a>
         </li>
       ))}

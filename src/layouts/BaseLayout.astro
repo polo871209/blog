@@ -30,6 +30,7 @@ const desc = description ?? site.description;
   <body>
     <div class="layout">
       <aside class="sidebar">
+        <a class="site-title" href="/">{site.author.name}</a>
         <nav class="nav">
           <ul>
             {site.nav.map((item) => (
@@ -41,7 +42,6 @@ const desc = description ?? site.description;
         </nav>
       </aside>
       <main class="content">
-        <h1 class="site-title"><a href="/">{site.author.name}</a></h1>
         <slot />
         <Footer />
       </main>

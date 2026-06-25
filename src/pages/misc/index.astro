@@ -1,11 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { titleOf, byDateDesc, iso } from "../../lib/posts";
 
-const posts = (await getCollection("misc")).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-);
-const iso = (d: Date) => d.toISOString().slice(0, 10);
+const posts = (await getCollection("misc")).sort(byDateDesc);
 ---
 <BaseLayout title="Misc" section="misc">
   <section class="list">
@@ -14,8 +12,8 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
       {posts.map((p) => (
         <li>
           <a href={`/misc/${p.id}/`}>
-            <time datetime={iso(p.data.date)}>{iso(p.data.date)}</time>
-            <span class="post-title">{p.data.title}</span>
+            {p.data.date && <time datetime={iso(p.data.date)}>{iso(p.data.date)}</time>}
+            <span class="post-title">{titleOf(p)}</span>
           </a>
         </li>
       ))}
