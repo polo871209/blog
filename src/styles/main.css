@@ -70,8 +70,8 @@ hr {
   max-width: 1040px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 1.75rem;
+  grid-template-columns: 120px 1fr;
+  gap: 1.4rem;
   padding: 4.5rem 2rem;
   align-items: start;
 }
@@ -85,7 +85,6 @@ hr {
 }
 
 .site-title {
-  font-size: 1.14rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -105,7 +104,6 @@ hr {
 }
 .nav a {
   color: var(--muted);
-  font-size: 1.04rem;
 }
 .nav a:hover {
   color: var(--fg);
