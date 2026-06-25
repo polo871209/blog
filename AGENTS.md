@@ -1,55 +1,42 @@
 # Astro Blog Guide
 
-Custom Astro blog. Kanagawa Wave palette, Fira Code mono. Static output, zero client JS except the mermaid + giscus islands on posts.
+Astro static blog. Kanagawa Wave palette, Fira Code mono. Zero client JS except mermaid + giscus on posts. `npm run dev | build | preview`.
 
-## Structure
+## Layout
 
-- **One content collection.** The folder under `src/content/` is the URL section, e.g. `src/content/logs/foo.md` → `/logs/foo/`. To add a section, just make a folder and register it in `sections` (`src/config.ts`).
-- `src/content/logs/*.md` — technical writeups
-- `src/content/misc/*.md` — reflections, tangents
-- `src/pages/index.astro` — About homepage (YAML manifest)
-- `src/pages/[section]/index.astro` — section list (dynamic); `src/pages/[...slug].astro` — post pages (dynamic)
-- `src/pages/index.xml.js` — RSS feed
-- `src/config.ts` — site metadata, `sections` (title/lede), nav (derived), social links, giscus
-- `src/lib/posts.ts` — `titleOf` / `sectionOf` / `byDateDesc` / `iso` helpers
-- `src/styles/main.css` — all styling
-- `astro.config.mjs` — `remarkMermaid` plugin, inline-CSS + lightningcss build tuning
+- One collection: the folder under `src/content/` is the URL section, e.g. `logs/foo.md` -> `/logs/foo/`. New section = new folder + entry in `sections` (`src/config.ts`).
+- `src/content/{logs,misc}/*.md` -- posts
+- `src/pages/` -- `index.astro` (About), `[section]/index.astro` (lists), `[...slug].astro` (posts), `index.xml.js` (RSS)
+- `src/config.ts` -- site meta, `sections`, derived nav, giscus
+- `src/lib/posts.ts` -- `titleOf` / `sectionOf` / `byDateDesc` / `iso`
+- `src/styles/main.css` -- all styling
+- `astro.config.mjs` -- `remarkMermaid`, inline-CSS + lightningcss
 
-## Post Frontmatter
+## Frontmatter
 
-All optional — a post can have none (title falls back to the humanized filename, undated posts sort last).
+All optional (no frontmatter = title from filename, undated sorts last):
 
 ```yaml
 ---
-title: "Post title" # optional; defaults to filename
-date: 2025-08-13 # optional, yyyy-mm-dd
-lastmod: 2025-09-15 # optional; bump on meaningful edits
+title: "Post title"
+date: 2025-08-13
+lastmod: 2025-09-15 # bump on meaningful edits
 ---
 ```
 
-Body skeleton: `## TL;DR` → `---` → main content with H2/H3 → `---` → `## References`.
+Body: `## TL;DR` -> `---` -> H2/H3 content -> `---` -> `## References`.
 
-## Authoring helpers
+## Authoring
 
-- Code highlighting: Shiki, `kanagawa-wave` theme. Always specify a fenced language.
-- Raw terminal output: hand-write `<pre><code class="language-x">...</code></pre>` HTML when Shiki highlighting hurts readability (e.g. colorize only a value with an inline `<span style="color:#...">`). These pass through unhighlighted by design.
-- Mermaid: a ```mermaid fenced block (the remark plugin turns it into a rendered diagram).
-- Callouts: raw HTML `<div class="alert">...</div>` (or `alert-error`). Markdown does not parse inside, so write inline HTML (`<strong>`, `<code>`).
-- Cross-links between posts: absolute, e.g. `/logs/wolfi_made_easy/`.
+- Fenced code: always tag the language (Shiki, `kanagawa-wave`).
+- Raw terminal output: hand-write `<pre><code class="language-x">` with inline `<span style="color:#...">` to colorize; passes through unhighlighted.
+- Mermaid: ```mermaid fence.
+- Callouts: `<div class="alert">` / `alert-error` (raw HTML inside, markdown won't parse).
+- Cross-links: absolute, `/logs/<slug>/`.
 
-## Tone & Style
+## Content
 
-- Audience: technical pros, assume familiarity
-- Voice: fluent, casual, direct
-- **No emojis** in posts
-- Backticks for inline code, tools, key phrases
-- Short paragraphs, visual separators between sections
-- Code blocks: always specify language
-
-## TL;DR Rule
-
-User provides TL;DR. Do not write from scratch. Only adjust wording when explicitly asked.
-
-## Technical Accuracy
-
-Verify CLI examples (`--help` or run them). Cross-check official docs. Don't invent flags.
+- Technical audience, assume familiarity. Fluent, casual, direct. No emojis.
+- Backticks for code/tools. Short paragraphs.
+- TL;DR is user-provided -- never write from scratch, only reword when asked.
+- Verify CLI flags (`--help` / docs); don't invent.
