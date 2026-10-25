@@ -17,7 +17,7 @@ function remarkMermaid() {
 }
 
 export default defineConfig({
-  site: "https://polo.is-not-a.dev",
+  site: "https://lochingpo.com",
   // Inline the (tiny) stylesheet into each page -> no render-blocking CSS request.
   build: { inlineStylesheets: "always" },
   vite: { build: { cssMinify: "lightningcss" } },
