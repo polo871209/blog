@@ -1,13 +1,13 @@
 # Astro Blog Guide
 
-Astro static blog. Kanagawa Lotus (light) palette, Fira Code mono. Client JS: the three.js garden on `/`, mermaid + giscus on posts. Keep other pages JS-free. `pnpm dev | build | preview`.
+Astro static blog. Kanagawa Lotus (light) palette, Fira Code mono. Client JS: the opengarden tree on `/` (WebGPU, hidden in browsers without it), mermaid + giscus on posts. Keep other pages JS-free. `pnpm dev | build | preview`. `pnpm run deploy` builds and uploads `dist/` to Cloudflare at lochingpo.com (`wrangler.jsonc`, wrangler from `mise.toml`). Plain `pnpm deploy` is a pnpm built-in and does not run the script. The GitHub Pages workflow still deploys polo.is-not-a.dev on push to `main`.
 
 ## Layout
 
 - One collection: the folder under `src/content/` is the URL section, e.g. `logs/foo.md` -> `/logs/foo/`. New section = new folder + entry in `sections` (`src/config.ts`).
 - `src/content/{logs,misc}/*.md` -- posts
 - `src/pages/` -- `index.astro` (home: garden hero, manifest, recent posts. The site title links here, there is no About tab), `[section]/index.astro` (lists), `[...slug].astro` (posts), `index.xml.js` (RSS)
-- `src/garden/` -- three.js garden tree, ported from `~/app/garden-tree`. Always the spring sakura look, seed random per visit. Colors are in `looks.ts`, and `ground` must equal the CSS `--bg`.
+- Garden: `@opengardenjs/web` + `@opengardenjs/cherry` (github.com/polo871209/opengarden), mounted in `index.astro`, always spring. Ground and camera come from the package, so fix them there, not in this repo.
 - `src/layouts/` -- `Document.astro` (html shell), `BaseLayout.astro` (list and post pages), `Post.astro`
 - `src/config.ts` -- site meta, `sections`, derived nav, giscus
 - `src/lib/posts.ts` -- `titleOf` / `sectionOf` / `byDateDesc` / `iso`

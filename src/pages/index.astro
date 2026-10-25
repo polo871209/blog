@@ -51,8 +51,26 @@ const recent = (await getCollection("posts")).sort(byDateDesc).slice(0, 5);
 </Document>
 
 <script>
-  import { createGardenTree } from "../garden/garden-tree";
+  import { cherry } from "@opengardenjs/cherry";
+  import { mountGarden } from "@opengardenjs/web";
 
+  const wide = matchMedia("(min-width: 900px)");
+  const offsetX = () => (wide.matches ? 0.18 : 0);
   const stage = document.querySelector<HTMLElement>("#garden");
-  if (stage) createGardenTree(stage, 1 + Math.floor(Math.random() * 999));
+  if (stage)
+    mountGarden(stage, {
+      species: cherry,
+      season: "spring",
+      offsetX: offsetX(),
+      scene: {
+        ground: "#f2ecbc",
+        gravel: "#ece5b6",
+        rake: "#e5ddb0",
+        shadow: "#a09cac",
+      },
+    })
+      .then((garden) =>
+        wide.addEventListener("change", () => garden.setOffsetX(offsetX())),
+      )
+      .catch((error) => console.warn("garden disabled:", error.message));
 </script>

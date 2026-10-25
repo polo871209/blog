@@ -172,19 +172,18 @@ importers:
       '@astrojs/rss':
         specifier: ^4.0.19
         version: 4.0.19
+      '@opengardenjs/cherry':
+        specifier: ^0.1.1
+        version: 0.1.1(@opengardenjs/core@0.1.1)
+      '@opengardenjs/web':
+        specifier: ^0.1.1
+        version: 0.1.1
       astro:
         specifier: ^7.4.2
         version: 7.4.2(@astrojs/markdown-remark@7.3.4)(yaml@2.9.1)
-      three:
-        specifier: ^0.186.1
-        version: 0.186.1
       unist-util-visit:
         specifier: ^5.1.0
         version: 5.1.0
-    devDependencies:
-      '@types/three':
-        specifier: ^0.186.0
-        version: 0.186.0
 
 packages:
 
@@ -556,6 +555,17 @@ packages:
   '@nodable/entities@3.1.0':
     resolution: {integrity: sha512-LsS/DjHr+uDM647Gru/cA8+J3a3HfhttwCKLyuoyN7yXTFCxKBtSgMQBvrW9yNPa2/zDRUNuGPaH5QUFoa4arQ==}
 
+  '@opengardenjs/cherry@0.1.1':
+    resolution: {integrity: sha512-zb/xZwpPGhxkyzvuXmPg+M1uhk2P/D1ZiHPQZbMA1X5Xa+EEGefVEYwQLVn8j3DfpsKadqE8VsfomCvmNSh5Lg==}
+    peerDependencies:
+      '@opengardenjs/core': ^0.1.1
+
+  '@opengardenjs/core@0.1.1':
+    resolution: {integrity: sha512-IhJ0o05Fhyvef///15uWctQhTkwefHj5AQcd3GZco0gDguROovr1i5/wNfvHD2Ewa9lOzmb7msqd1unGjgPbhQ==}
+
+  '@opengardenjs/web@0.1.1':
+    resolution: {integrity: sha512-Mn72m1BhWsuB6EkZq+cJz/HNSghazt6lwkiIwrtdQn+k7IVCz+gOWlSX6hQ9kz/YuhjNNpJHJOSB7i3wp8xQmg==}
+
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
@@ -739,6 +749,9 @@ packages:
 
   '@ungap/structured-clone@1.4.0':
     resolution: {integrity: sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==}
+
+  '@webgpu/types@0.1.74':
+    resolution: {integrity: sha512-lgiI4hbuLcI9unnm2cL/tvCaQU45dp0xcLWJh5uB/9MBGvIA4F8XIk7nSiBeg+K4xWGYwgZKn80LmERI5CxoTA==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -2206,6 +2219,22 @@ snapshots:
 
   '@nodable/entities@3.1.0': {}
 
+  '@opengardenjs/cherry@0.1.1(@opengardenjs/core@0.1.1)':
+    dependencies:
+      '@opengardenjs/core': 0.1.1
+      '@types/three': 0.186.0
+      three: 0.186.1
+
+  '@opengardenjs/core@0.1.1':
+    dependencies:
+      '@types/three': 0.186.0
+      '@webgpu/types': 0.1.74
+      three: 0.186.1
+
+  '@opengardenjs/web@0.1.1':
+    dependencies:
+      '@opengardenjs/core': 0.1.1
+
   '@oslojs/encoding@1.1.0': {}
 
   '@oxc-project/types@0.155.0': {}
@@ -2348,6 +2377,8 @@ snapshots:
   '@types/webxr@0.5.24': {}
 
   '@ungap/structured-clone@1.4.0': {}
+
+  '@webgpu/types@0.1.74': {}
 
   acorn-jsx@5.3.2(acorn@8.19.0):
     dependencies:

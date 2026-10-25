@@ -15,3 +15,6 @@ node_modules/
 # global ~/.config/git/ignore has `logs/`; keep every logs/ dir under src/
 !src/**/logs/
 !src/**/logs/**
+
+# wrangler
+.wrangler/
