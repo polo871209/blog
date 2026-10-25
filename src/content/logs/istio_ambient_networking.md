@@ -339,7 +339,7 @@ Expect ztunnel + istio-cni running on every node, target namespaces labeled `amb
 sudo pgrep -a ztunnel
 ```
 
-<pre><code><span style="color:#fab387">19286</span> /usr/local/bin/ztunnel proxy ztunnel
+<pre><code><span style="color:#cc6d00">19286</span> /usr/local/bin/ztunnel proxy ztunnel
 </code></pre>
 
 Check socket:
@@ -357,10 +357,10 @@ ls -la /var/run/ztunnel/ztunnel.sock
 sudo nsenter -t 19286 -n ss -tlnp
 ```
 
-<pre><code>LISTEN 0 1024 127.0.0.1:<span style="color:#fab387">15000</span>   users:(("ztunnel",pid=19286))   # admin
-LISTEN 0 1024         *:<span style="color:#fab387">15020</span>   users:(("ztunnel",pid=19286))   # metrics
-LISTEN 0 1024         *:<span style="color:#fab387">15021</span>   users:(("ztunnel",pid=19286))   # healthz
-LISTEN 0 128          *:<span style="color:#fab387">15008</span>   users:(("ztunnel",pid=19286))   # HBONE mTLS inbound
+<pre><code>LISTEN 0 1024 127.0.0.1:<span style="color:#cc6d00">15000</span>   users:(("ztunnel",pid=19286))   # admin
+LISTEN 0 1024         *:<span style="color:#cc6d00">15020</span>   users:(("ztunnel",pid=19286))   # metrics
+LISTEN 0 1024         *:<span style="color:#cc6d00">15021</span>   users:(("ztunnel",pid=19286))   # healthz
+LISTEN 0 128          *:<span style="color:#cc6d00">15008</span>   users:(("ztunnel",pid=19286))   # HBONE mTLS inbound
 </code></pre>
 
 Note: **15001 and 15006 are missing here**. That's correct — those listeners live inside each app pod's netns.
@@ -381,11 +381,11 @@ Check listeners:
 sudo nsenter -t $APP_PID -n ss -tlnp
 ```
 
-<pre><code>LISTEN 0 128  127.0.0.1:<span style="color:#fab387">15053</span>  users:(("ztunnel",pid=19286,fd=73))  # DNS proxy
-LISTEN 0 128          *:<span style="color:#fab387">15008</span>  users:(("ztunnel",pid=19286,fd=75))  # HBONE
-LISTEN 0 128          *:<span style="color:#fab387">15001</span>  users:(("ztunnel",pid=19286,fd=77))  # outbound
-LISTEN 0 128          *:<span style="color:#fab387">15006</span>  users:(("ztunnel",pid=19286,fd=76))  # inbound plaintext
-LISTEN 0 511          *:<span style="color:#a6e3a1">8080</span>                                        # your app
+<pre><code>LISTEN 0 128  127.0.0.1:<span style="color:#cc6d00">15053</span>  users:(("ztunnel",pid=19286,fd=73))  # DNS proxy
+LISTEN 0 128          *:<span style="color:#cc6d00">15008</span>  users:(("ztunnel",pid=19286,fd=75))  # HBONE
+LISTEN 0 128          *:<span style="color:#cc6d00">15001</span>  users:(("ztunnel",pid=19286,fd=77))  # outbound
+LISTEN 0 128          *:<span style="color:#cc6d00">15006</span>  users:(("ztunnel",pid=19286,fd=76))  # inbound plaintext
+LISTEN 0 511          *:<span style="color:#6f894e">8080</span>                                        # your app
 </code></pre>
 
 This is the **proof** that fd-passing works. The process is `pid=19286` — same ztunnel running in its own pod. But the sockets are bound inside **this app pod's netns**. One process, many netns, listeners isolated per pod.

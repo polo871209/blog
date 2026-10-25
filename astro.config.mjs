@@ -27,6 +27,6 @@ export default defineConfig({
     // heading-id + raw-HTML steps. Stay on the supported path until Astro
     // ships a clean way to extend the default pipeline.
     remarkPlugins: [remarkMermaid],
-    shikiConfig: { theme: "kanagawa-wave", wrap: false },
+    shikiConfig: { theme: "kanagawa-lotus", wrap: false },
   },
 });

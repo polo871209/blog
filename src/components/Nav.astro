@@ -1,0 +1,20 @@
+---
+import { site, nav } from "../config";
+
+interface Props {
+  section?: string;
+}
+const { section } = Astro.props;
+---
+<header class="site-bar">
+  <a class="site-title" href="/">{site.author.name}</a>
+  <nav class="nav">
+    <ul>
+      {nav.map((item) => (
+        <li class={section === item.match ? "active" : ""}>
+          <a href={item.href} aria-current={section === item.match ? "page" : undefined}>{item.name}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

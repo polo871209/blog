@@ -16,8 +16,8 @@ The pause container is an infrastructure container that Kubernetes automatically
 
 You can see it in action by inspecting the containers on a node:
 
-<pre><code><span style="color:#94e2d5">CONTAINER ID</span>   <span style="color:#94e2d5">IMAGE</span>                       <span style="color:#94e2d5">COMMAND</span>   
-<span style="color:#f9e2af">0c49f0950dcf</span>   rancher/mirrored-pause:3.6  <span style="color:#a6e3a1">"/pause"</span>
+<pre><code><span style="color:#597b75">CONTAINER ID</span>   <span style="color:#597b75">IMAGE</span>                       <span style="color:#597b75">COMMAND</span>   
+<span style="color:#77713f">0c49f0950dcf</span>   rancher/mirrored-pause:3.6  <span style="color:#6f894e">"/pause"</span>
 </code></pre>
 
 ---

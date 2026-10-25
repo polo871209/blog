@@ -1,6 +1,10 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
 import { Code } from "astro:components";
+import Document from "../layouts/Document.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { titleOf, byDateDesc, sectionOf, iso } from "../lib/posts";
 
 const manifest = `apiVersion: v28
 kind: Human
@@ -13,13 +17,42 @@ spec:
   location:
     current: Malaysia
     born: Taiwan`;
+
+const recent = (await getCollection("posts")).sort(byDateDesc).slice(0, 5);
 ---
-<BaseLayout section="home">
-  <article class="about">
-    <div class="prose">
-      <div class="manifest">
-        <Code code={manifest} lang="yaml" theme="kanagawa-wave" />
+<Document>
+  <section class="garden">
+    <div class="garden-stage" id="garden"></div>
+    <div class="garden-overlay">
+      <Nav />
+      <div class="garden-foot">
+        <div class="garden-card manifest">
+          <Code code={manifest} lang="yaml" theme="kanagawa-lotus" />
+        </div>
+        <p class="garden-hint">drag to turn · brush the leaves · click to shake</p>
       </div>
     </div>
-  </article>
-</BaseLayout>
+  </section>
+
+  <main class="home">
+    <h2 class="home-heading">recent</h2>
+    <ul class="post-list">
+      {recent.map((p) => (
+        <li>
+          <a href={`/${p.id}/`}>
+            {p.data.date && <time datetime={iso(p.data.date)}>{iso(p.data.date)}</time>}
+            <span class="post-title">{titleOf(p)} <span class="post-section">{sectionOf(p)}</span></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <Footer />
+  </main>
+</Document>
+
+<script>
+  import { createGardenTree } from "../garden/garden-tree";
+
+  const stage = document.querySelector<HTMLElement>("#garden");
+  if (stage) createGardenTree(stage, 1 + Math.floor(Math.random() * 999));
+</script>

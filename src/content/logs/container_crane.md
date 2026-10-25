@@ -18,7 +18,7 @@ Google's `crane` is a lightweight CLI tool for interacting with container regist
 
 **Tag existing remote images without pulling:**
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">crane</span> tag registry.example.com/library/ubuntu:v0 v1
+<pre><code class="language-bash">$ <span style="color: #624c83;">crane</span> tag registry.example.com/library/ubuntu:v0 v1
 </code></pre>
 
 This eliminates the traditional workflow of `pull → tag → push` by operating directly on the registry.
@@ -27,15 +27,15 @@ This eliminates the traditional workflow of `pull → tag → push` by operating
 
 **List files in an image without pulling:**
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">crane</span> export ubuntu - | tar -tvf - | less
+<pre><code class="language-bash">$ <span style="color: #624c83;">crane</span> export ubuntu - | tar -tvf - | less
 </code></pre>
 
 **Extract specific files from remote images:**
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">crane</span> export ubuntu - | tar -Oxf - etc/passwd
+<pre><code class="language-bash">$ <span style="color: #624c83;">crane</span> export ubuntu - | tar -Oxf - etc/passwd
 </code></pre>
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">crane</span> export ubuntu - | tar -Oxf - etc/hostname > hostname.txt
+<pre><code class="language-bash">$ <span style="color: #624c83;">crane</span> export ubuntu - | tar -Oxf - etc/hostname > hostname.txt
 </code></pre>
 
 The `export` command streams the entire image as a tar archive to stdout (`-`), allowing you to pipe it directly to standard Unix tools. This is particularly useful for inspecting image contents or extracting configuration files without local storage overhead.
@@ -46,12 +46,12 @@ The `export` command streams the entire image as a tar archive to stdout (`-`), 
 
 **Inspect image configuration without pulling:**
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">crane</span> config busybox:1.33
+<pre><code class="language-bash">$ <span style="color: #624c83;">crane</span> config busybox:1.33
 </code></pre>
 
 **Compare configurations between image versions:**
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">diff</span> <(crane config busybox:1.32 | jq) <(crane config busybox:1.33 | jq)
+<pre><code class="language-bash">$ <span style="color: #624c83;">diff</span> <(crane config busybox:1.32 | jq) <(crane config busybox:1.33 | jq)
 </code></pre>
 
 This reveals environment variables, entrypoints, working directories, and other image metadata directly from the registry.
@@ -62,9 +62,9 @@ This reveals environment variables, entrypoints, working directories, and other 
 
 This is actually the feature that first introduced me to this tool - the ability to append layers directly to remote images.
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">echo</span> "custom content" > myfile.txt
-$ <span style="color: #cba6f7;">tar</span> -czf myfile.tar.gz myfile.txt
-$ <span style="color: #cba6f7;">crane</span> append -b ubuntu:22.04 -f myfile.tar.gz -t registry.example.com/myapp:custom
+<pre><code class="language-bash">$ <span style="color: #624c83;">echo</span> "custom content" > myfile.txt
+$ <span style="color: #624c83;">tar</span> -czf myfile.tar.gz myfile.txt
+$ <span style="color: #624c83;">crane</span> append -b ubuntu:22.04 -f myfile.tar.gz -t registry.example.com/myapp:custom
 </code></pre>
 
 The `append` command takes a base image (`-b`), adds new layers from tarballs (`-f`), and creates a new tagged image (`-t`) directly in the registry, bypassing the need for local Docker builds or intermediate storage.

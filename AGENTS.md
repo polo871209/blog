@@ -1,15 +1,17 @@
 # Astro Blog Guide
 
-Astro static blog. Kanagawa Wave palette, Fira Code mono. Zero client JS except mermaid + giscus on posts. `npm run dev | build | preview`.
+Astro static blog. Kanagawa Lotus (light) palette, Fira Code mono. Client JS: the three.js garden on `/`, mermaid + giscus on posts. Keep other pages JS-free. `pnpm dev | build | preview`.
 
 ## Layout
 
 - One collection: the folder under `src/content/` is the URL section, e.g. `logs/foo.md` -> `/logs/foo/`. New section = new folder + entry in `sections` (`src/config.ts`).
 - `src/content/{logs,misc}/*.md` -- posts
-- `src/pages/` -- `index.astro` (About), `[section]/index.astro` (lists), `[...slug].astro` (posts), `index.xml.js` (RSS)
+- `src/pages/` -- `index.astro` (home: garden hero, manifest, recent posts. The site title links here, there is no About tab), `[section]/index.astro` (lists), `[...slug].astro` (posts), `index.xml.js` (RSS)
+- `src/garden/` -- three.js garden tree, ported from `~/app/garden-tree`. Always the spring sakura look, seed random per visit. Colors are in `looks.ts`, and `ground` must equal the CSS `--bg`.
+- `src/layouts/` -- `Document.astro` (html shell), `BaseLayout.astro` (list and post pages), `Post.astro`
 - `src/config.ts` -- site meta, `sections`, derived nav, giscus
 - `src/lib/posts.ts` -- `titleOf` / `sectionOf` / `byDateDesc` / `iso`
-- `src/styles/main.css` -- all styling
+- `src/styles/main.css` -- all styling. `--frame`, `--gutter`, and `--bar-top` place the nav bar (`Nav.astro`) at the same spot on every page
 - `astro.config.mjs` -- `remarkMermaid`, inline-CSS + lightningcss
 
 ## Frontmatter
@@ -28,9 +30,10 @@ Body: `## TL;DR` -> `---` -> H2/H3 content -> `---` -> `## References`.
 
 ## Authoring
 
-- Fenced code: always tag the language (Shiki, `kanagawa-wave`).
-- Raw terminal output: hand-write `<pre><code class="language-x">` with inline `<span style="color:#...">` to colorize; passes through unhighlighted.
-- Mermaid: ```mermaid fence.
+- Fenced code: always tag the language (Shiki, `kanagawa-lotus`).
+- Raw terminal output: hand-write `<pre><code class="language-x">` with inline `<span style="color:#...">` to colorize; passes through unhighlighted. Use Lotus hexes that read on `#f2ecbc`: green `#6f894e`, red `#c84053`, violet `#624c83`, orange `#cc6d00`, aqua `#597b75`, yellow `#77713f`, dim `#8a8980`.
+- Mermaid: ```mermaid fence. Posts without one ship no mermaid JS.
+- `public/fonts/FiraCode-VF.woff2` is subset to Latin-1, punctuation, arrows, math, box drawing, and shapes, at weights 400 to 700. If a glyph falls back to another font, rebuild it from the full font in `c2ae7a2`: `git show c2ae7a2:public/fonts/FiraCode-VF.woff2 > full.woff2`, then `uvx --from 'fonttools[woff]' fonttools varLib.instancer` (`wght=400:700`) and `pyftsubset --layout-features=calt,liga,ccmp,locl --flavor=woff2` with the extra `--unicodes`.
 - Callouts: `<div class="alert">` / `alert-error` (raw HTML inside, markdown won't parse).
 - Cross-links: absolute, `/logs/<slug>/`.
 

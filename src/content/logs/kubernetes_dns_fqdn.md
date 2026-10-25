@@ -20,9 +20,9 @@ Every pod gets a `/etc/resolv.conf` file with CoreDNS settings:
 kubectl exec <pod-name> -- cat /etc/resolv.conf
 ```
 
-<pre><code><span style="color:#94e2d5">nameserver</span> 192.168.194.138
-<span style="color:#94e2d5">search</span> default.svc.cluster.local svc.cluster.local cluster.local
-<span style="color:#94e2d5">options</span> ndots:5
+<pre><code><span style="color:#597b75">nameserver</span> 192.168.194.138
+<span style="color:#597b75">search</span> default.svc.cluster.local svc.cluster.local cluster.local
+<span style="color:#597b75">options</span> ndots:5
 </code></pre>
 
 Three critical components:
@@ -80,8 +80,8 @@ CoreDNS runs as a **Deployment**, not a DaemonSet.
 kubectl get deployment coredns -n kube-system
 ```
 
-<pre><code><span style="color:#94e2d5">NAME</span>      <span style="color:#94e2d5">READY</span>   <span style="color:#94e2d5">UP-TO-DATE</span>   <span style="color:#94e2d5">AVAILABLE</span>
-<span style="color:#f9e2af">coredns</span>   2/2     2            2
+<pre><code><span style="color:#597b75">NAME</span>      <span style="color:#597b75">READY</span>   <span style="color:#597b75">UP-TO-DATE</span>   <span style="color:#597b75">AVAILABLE</span>
+<span style="color:#77713f">coredns</span>   2/2     2            2
 </code></pre>
 
 Typical default: **2 replicas** for the entire cluster.

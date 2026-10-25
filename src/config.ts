@@ -29,11 +29,8 @@ export const sections = {
 
 export type Section = keyof typeof sections;
 
-export const nav = [
-  { name: "About", href: "/", match: "home" },
-  ...Object.entries(sections).map(([key, s]) => ({
-    name: s.title,
-    href: `/${key}/`,
-    match: key,
-  })),
-];
+export const nav = Object.entries(sections).map(([key, s]) => ({
+  name: s.title,
+  href: `/${key}/`,
+  match: key,
+}));

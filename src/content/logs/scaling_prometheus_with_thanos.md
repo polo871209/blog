@@ -126,9 +126,9 @@ end
 
     Q --> |Unified PromQL| G[Grafana/Users]
 
-    style Q fill:#74c7ec,color:#000
-    style OBJ fill:#f9e2af,color:#000
-    style G fill:#a6e3a1,color:#000
+    style Q fill:#b5cbd2,color:#000
+    style OBJ fill:#f9d791,color:#000
+    style G fill:#b7d0ae,color:#000
 ```
 
 **Component roles:**

@@ -2,27 +2,34 @@
 @font-face {
   font-family: "Fira Code";
   src: url("/fonts/FiraCode-VF.woff2") format("woff2-variations");
-  font-weight: 300 700;
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* kanagawa wave palette */
+/* kanagawa lotus palette: https://github.com/rebelot/kanagawa.nvim */
 :root {
-  --bg: #1f1f28;
-  --bg-soft: #2a2a37;
-  --bg-alt: #16161d;
-  --fg: #dcd7ba;
-  --fg-dim: #c8c093;
-  --muted: #727169;
-  --border: #363646;
-  --accent: #7e9cd8;
-  --accent-2: #98bb6c;
-  --link: #7fb4ca;
-  --link-hov: #a3d4d5;
-  --warn: #dca561;
-  --error: #e46876;
-  --code-bg: #16161d;
+  --bg: #f2ecbc;
+  --bg-soft: #e5ddb0;
+  --fg: #545464;
+  --muted: #716e61;
+  --border: #d5cea3;
+  --accent: #4d699b;
+  --accent-2: #6f894e;
+  --code: #624c83;
+  --link: #4d699b;
+  --link-hov: #4e8ca2;
+  --warn: #cc6d00;
+  --error: #c84053;
+  --frame: 1040px;
+  --gutter: 2rem;
+  --bar-top: 3rem;
+}
+@media (max-width: 899px) {
+  :root {
+    --gutter: 1.25rem;
+    --bar-top: 1rem;
+  }
 }
 
 /* base */
@@ -33,6 +40,7 @@
 }
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 body {
   margin: 0;
@@ -46,6 +54,10 @@ body {
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+code,
+pre {
+  font-family: inherit;
 }
 a {
   color: var(--link);
@@ -66,22 +78,18 @@ hr {
 }
 
 /* layout */
-.layout {
-  max-width: 1040px;
+.page {
+  max-width: var(--frame);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 1.4rem;
-  padding: 4.5rem 2rem;
-  align-items: start;
+  padding: var(--bar-top) var(--gutter) 4.5rem;
 }
 
-.sidebar {
-  position: sticky;
-  top: 4.5rem;
+.site-bar {
+  width: fit-content;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.75rem;
+  pointer-events: auto;
 }
 
 .site-title {
@@ -99,8 +107,7 @@ hr {
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.1rem;
 }
 .nav a {
   color: var(--muted);
@@ -113,8 +120,8 @@ hr {
 }
 
 .content {
-  min-width: 0;
   max-width: 780px;
+  margin-top: 3rem;
 }
 
 /* typography */
@@ -132,7 +139,7 @@ hr {
 .prose h4 {
   font-size: 0.95rem;
   margin: 1.5rem 0 0.5rem;
-  color: var(--fg-dim);
+  color: var(--muted);
 }
 .prose p {
   margin: 0 0 1.15rem;
@@ -149,7 +156,7 @@ hr {
   border-left: 2px solid var(--accent);
   margin: 1.25rem 0;
   padding: 0.1rem 0 0.1rem 1rem;
-  color: var(--fg-dim);
+  color: var(--muted);
 }
 .prose strong {
   color: var(--fg);
@@ -162,15 +169,18 @@ hr {
 
 /* code */
 .prose :not(pre) > code {
-  background: var(--code-bg);
+  background: var(--bg-soft);
   border: 1px solid var(--border);
   padding: 0.05rem 0.35rem;
   border-radius: 3px;
   font-size: 0.88em;
-  color: var(--accent-2);
+  color: var(--code);
+}
+/* Shiki inlines the theme background, which hides the translucent garden card. */
+.astro-code {
+  background-color: transparent !important;
 }
 .prose pre {
-  background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 1rem 1.1rem;
@@ -203,18 +213,15 @@ hr {
   background: var(--bg-soft);
 }
 
-/* about manifest: borderless inline yaml */
-.prose .manifest pre {
-  background: none !important;
-  border: none;
-  padding: 0;
+.manifest pre {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 /* post list */
 .lede {
-  color: var(--fg-dim);
+  color: var(--muted);
   margin-bottom: 2.5rem;
 }
 .post-list {
@@ -239,6 +246,13 @@ hr {
   color: var(--muted);
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
+}
+.post-section {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.post-section::before {
+  content: "#";
 }
 
 /* post */
@@ -314,23 +328,140 @@ hr {
   height: 18px;
 }
 
+/* home: garden hero */
+.garden {
+  position: relative;
+  height: max(560px, 92svh);
+}
+.garden-stage {
+  position: absolute;
+  inset: 0;
+}
+.garden-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+}
+.garden::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 9rem;
+  background: linear-gradient(transparent, var(--bg));
+  pointer-events: none;
+}
+.garden-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  max-width: var(--frame);
+  margin: 0 auto;
+  padding: var(--bar-top) var(--gutter) 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.garden-card {
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter: blur(6px);
+  border: 1.5px solid var(--fg);
+  box-shadow: 0 3px 0 var(--fg);
+}
+.garden-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.garden-card {
+  min-width: 0;
+  padding: 1rem 1.4rem;
+  border-radius: 10px;
+}
+.garden-card pre {
+  overflow-x: auto;
+}
+.garden-hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.home {
+  max-width: var(--frame);
+  margin: 0 auto;
+  padding: 1.5rem var(--gutter) 4.5rem;
+}
+.home > * {
+  max-width: 780px;
+}
+.home-heading {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+}
+.home-heading::before {
+  content: "## ";
+  color: var(--accent-2);
+}
+
+@media (max-width: 899px) {
+  .garden {
+    height: auto;
+  }
+  .garden-stage {
+    position: relative;
+    height: 54svh;
+  }
+  .garden::after {
+    top: calc(54svh - 6rem);
+    height: 6rem;
+  }
+  .garden-overlay {
+    position: static;
+    height: auto;
+    padding: 0 var(--gutter);
+    display: block;
+  }
+  .content {
+    margin-top: 2rem;
+  }
+  .site-bar {
+    gap: 1.1rem;
+  }
+  .garden .site-bar {
+    position: absolute;
+    z-index: 2;
+    top: var(--bar-top);
+    left: var(--gutter);
+  }
+  .garden-foot {
+    position: relative;
+    z-index: 2;
+    margin-top: -2.5rem;
+  }
+  .garden-card {
+    padding: 0.9rem 1rem;
+  }
+  .manifest pre {
+    font-size: 0.8rem;
+  }
+  .garden-hint {
+    display: none;
+  }
+  .home {
+    padding-top: 2.5rem;
+  }
+}
+
 /* responsive */
 @media (max-width: 720px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1.25rem;
-  }
-  .sidebar {
-    position: static;
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  .nav ul {
-    flex-direction: row;
-    gap: 1rem;
-  }
   .post-list a {
     grid-template-columns: 1fr;
     gap: 0.1rem;

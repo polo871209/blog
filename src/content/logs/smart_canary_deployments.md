@@ -67,50 +67,50 @@ Well, that's it! Simple rollouts done! _Of course, you'll need argo-rollouts ins
 
 Let's start by deploying the first version and checking the rollout status:
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
+<pre><code class="language-bash">$ <span style="color: #624c83;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                    KIND        STATUS     AGE  INFO
-<span style="color: #f38ba8;">⟳ rpc-server</span>                            Rollout     <span style="color: #a6e3a1;">✔ Healthy</span>  16s
+<span style="color: #c84053;">⟳ rpc-server</span>                            Rollout     <span style="color: #6f894e;">✔ Healthy</span>  16s
 └──# revision:1
-   └──<span style="color: #f38ba8;">⧉ rpc-server-5ff779f75f</span>           ReplicaSet  <span style="color: #a6e3a1;">✔ Healthy</span>  16s  stable
-      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         <span style="color: #a6e3a1;">✔ Running</span>  16s  ready:1/1
-      ├──□ rpc-server-5ff779f75f-qn27n  Pod         <span style="color: #a6e3a1;">✔ Running</span>  16s  ready:1/1
-      └──□ rpc-server-5ff779f75f-vslc6  Pod         <span style="color: #a6e3a1;">✔ Running</span>  16s  ready:1/1
+   └──<span style="color: #c84053;">⧉ rpc-server-5ff779f75f</span>           ReplicaSet  <span style="color: #6f894e;">✔ Healthy</span>  16s  stable
+      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         <span style="color: #6f894e;">✔ Running</span>  16s  ready:1/1
+      ├──□ rpc-server-5ff779f75f-qn27n  Pod         <span style="color: #6f894e;">✔ Running</span>  16s  ready:1/1
+      └──□ rpc-server-5ff779f75f-vslc6  Pod         <span style="color: #6f894e;">✔ Running</span>  16s  ready:1/1
 </code></pre>
 
 ---
 
 Now let's deploy a new version of the deployment, and you'll see revision 2 like this:
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
+<pre><code class="language-bash">$ <span style="color: #624c83;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                    KIND        STATUS     AGE  INFO
-<span style="color: #f38ba8;">⟳ rpc-server</span>                            Rollout     <span style="color: #fab387;">॥ Paused</span>   23h
+<span style="color: #c84053;">⟳ rpc-server</span>                            Rollout     <span style="color: #cc6d00;">॥ Paused</span>   23h
 ├──# revision:2
-│  └──<span style="color: #f38ba8;">⧉ rpc-server-b9d7c8675</span>            ReplicaSet  <span style="color: #a6e3a1;">✔ Healthy</span>  23h  canary
-│     └──□ rpc-server-b9d7c8675-6lpxh   Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:1
+│  └──<span style="color: #c84053;">⧉ rpc-server-b9d7c8675</span>            ReplicaSet  <span style="color: #6f894e;">✔ Healthy</span>  23h  canary
+│     └──□ rpc-server-b9d7c8675-6lpxh   Pod         <span style="color: #6f894e;">✔ Running</span>  23h  ready:1/1,restarts:1
 └──# revision:1
-   └──<span style="color: #f38ba8;">⧉ rpc-server-5ff779f75f</span>           ReplicaSet  <span style="color: #a6e3a1;">✔ Healthy</span>  23h  stable
-      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:1
-      ├──□ rpc-server-5ff779f75f-qn27n  Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:2
-      └──□ rpc-server-5ff779f75f-vslc6  Pod         <span style="color: #a6e3a1;">✔ Running</span>  23h  ready:1/1,restarts:1
+   └──<span style="color: #c84053;">⧉ rpc-server-5ff779f75f</span>           ReplicaSet  <span style="color: #6f894e;">✔ Healthy</span>  23h  stable
+      ├──□ rpc-server-5ff779f75f-fbmj8  Pod         <span style="color: #6f894e;">✔ Running</span>  23h  ready:1/1,restarts:1
+      ├──□ rpc-server-5ff779f75f-qn27n  Pod         <span style="color: #6f894e;">✔ Running</span>  23h  ready:1/1,restarts:2
+      └──□ rpc-server-5ff779f75f-vslc6  Pod         <span style="color: #6f894e;">✔ Running</span>  23h  ready:1/1,restarts:1
 </code></pre>
 
 ---
 
 Let's say you've checked the canary status — now we can move to the next step of promoting the deployment:
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> promote rpc-server
+<pre><code class="language-bash">$ <span style="color: #624c83;">kubectl-argo-rollouts</span> promote rpc-server
 
-<span style="color: #585b70;"># After about 1 minute of waiting, you'll see the second version rolled out completely</span>
-$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
+<span style="color: #8a8980;"># After about 1 minute of waiting, you'll see the second version rolled out completely</span>
+$ <span style="color: #624c83;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                   KIND         STATUS        AGE    INFO
-<span style="color: #f38ba8;">⟳ rpc-server</span>                           Rollout      <span style="color: #a6e3a1;">✔ Healthy</span>     23h
+<span style="color: #c84053;">⟳ rpc-server</span>                           Rollout      <span style="color: #6f894e;">✔ Healthy</span>     23h
 ├──# revision:2
-│  └──<span style="color: #f38ba8;">⧉ rpc-server-b9d7c8675</span>           ReplicaSet   <span style="color: #a6e3a1;">✔ Healthy</span>     23h    stable
-│     ├──□ rpc-server-b9d7c8675-ftm8w  Pod          <span style="color: #a6e3a1;">✔ Running</span>     2m2s   ready:1/1
-│     ├──□ rpc-server-b9d7c8675-4cvbz  Pod          <span style="color: #a6e3a1;">✔ Running</span>     100s   ready:1/1
-│     └──□ rpc-server-b9d7c8675-dg4z9  Pod          <span style="color: #a6e3a1;">✔ Running</span>     69s    ready:1/1
+│  └──<span style="color: #c84053;">⧉ rpc-server-b9d7c8675</span>           ReplicaSet   <span style="color: #6f894e;">✔ Healthy</span>     23h    stable
+│     ├──□ rpc-server-b9d7c8675-ftm8w  Pod          <span style="color: #6f894e;">✔ Running</span>     2m2s   ready:1/1
+│     ├──□ rpc-server-b9d7c8675-4cvbz  Pod          <span style="color: #6f894e;">✔ Running</span>     100s   ready:1/1
+│     └──□ rpc-server-b9d7c8675-dg4z9  Pod          <span style="color: #6f894e;">✔ Running</span>     69s    ready:1/1
 └──# revision:1
-   └──<span style="color: #f38ba8;">⧉ rpc-server-5ff779f75f</span>          ReplicaSet   <span style="color: #585b70;">• ScaledDown</span>  23h
+   └──<span style="color: #c84053;">⧉ rpc-server-5ff779f75f</span>          ReplicaSet   <span style="color: #8a8980;">• ScaledDown</span>  23h
 </code></pre>
 
 **What happens during rollout:**
@@ -269,16 +269,16 @@ spec:
 
 Here's what the rollout status looks like with analysis running and failed:
 
-<pre><code class="language-bash">$ <span style="color: #cba6f7;">kubectl-argo-rollouts</span> get rollout rpc-server
+<pre><code class="language-bash">$ <span style="color: #624c83;">kubectl-argo-rollouts</span> get rollout rpc-server
 NAME                                   KIND         STATUS        AGE    INFO
-<span style="color: #f38ba8;">⟳ rpc-server</span>                           Rollout      <span style="color: #fab387;">॥ Paused</span>      4d18h
+<span style="color: #c84053;">⟳ rpc-server</span>                           Rollout      <span style="color: #cc6d00;">॥ Paused</span>      4d18h
 └──# revision:2
-   ├──<span style="color: #f38ba8;">⧉ rpc-server-b9d7c8675</span>           ReplicaSet   <span style="color: #a6e3a1;">✔ Healthy</span>     4d18h  stable
-   │  ├──□ rpc-server-b9d7c8675-ftm8w  Pod          <span style="color: #a6e3a1;">✔ Running</span>     3d18h  ready:1/1
-   │  ├──□ rpc-server-b9d7c8675-4cvbz  Pod          <span style="color: #a6e3a1;">✔ Running</span>     3d18h  ready:1/1
-   │  └──□ rpc-server-b9d7c8675-dg4z9  Pod          <span style="color: #a6e3a1;">✔ Running</span>     3d18h  ready:1/1
-   ├──<span style="color: #f9e2af;">α</span> rpc-server-b9d7c8675-2         AnalysisRun  <span style="color: #f38ba8;">⚠ Error</span>       3d18h  <span style="color: #f38ba8;">⚠ 5</span>
-   └──<span style="color: #f9e2af;">α</span> rpc-server-b9d7c8675-2.1       AnalysisRun  <span style="color: #a6e3a1;">✔ Successful</span>  3d18h  <span style="color: #a6e3a1;">✔ 1</span>
+   ├──<span style="color: #c84053;">⧉ rpc-server-b9d7c8675</span>           ReplicaSet   <span style="color: #6f894e;">✔ Healthy</span>     4d18h  stable
+   │  ├──□ rpc-server-b9d7c8675-ftm8w  Pod          <span style="color: #6f894e;">✔ Running</span>     3d18h  ready:1/1
+   │  ├──□ rpc-server-b9d7c8675-4cvbz  Pod          <span style="color: #6f894e;">✔ Running</span>     3d18h  ready:1/1
+   │  └──□ rpc-server-b9d7c8675-dg4z9  Pod          <span style="color: #6f894e;">✔ Running</span>     3d18h  ready:1/1
+   ├──<span style="color: #77713f;">α</span> rpc-server-b9d7c8675-2         AnalysisRun  <span style="color: #c84053;">⚠ Error</span>       3d18h  <span style="color: #c84053;">⚠ 5</span>
+   └──<span style="color: #77713f;">α</span> rpc-server-b9d7c8675-2.1       AnalysisRun  <span style="color: #6f894e;">✔ Successful</span>  3d18h  <span style="color: #6f894e;">✔ 1</span>
 </code></pre>
 
 Notice the `AnalysisRun` entries showing the automated analysis results — one failed with errors, one succeeded. This is your canary deployment making intelligent decisions based on real metrics, automatically aborting when things go wrong and keeping traffic on the stable version.
