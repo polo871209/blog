@@ -5,7 +5,7 @@ export const site = {
   links: [
     { name: "github", url: "https://github.com/polo871209" },
     { name: "linkedin", url: "https://linkedin.com/in/polohi" },
-    { name: "email", url: "mailto:qazh0123@gmail.com" },
+    { name: "email", url: "mailto:lochingpo@gmail.com" },
   ],
   giscus: {
     repo: "polo871209/blog",
